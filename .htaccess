@@ -1,0 +1,13 @@
+Options -MultiViews -Indexes
+
+RewriteEngine On
+
+# Handle Angular and Vue.js requests...
+RewriteCond %{REQUEST_FILENAME} -d [OR]
+RewriteCond %{REQUEST_FILENAME} -f
+RewriteRule ^ - [N]
+
+# Handle Front Controller...
+RewriteCond %{REQUEST_URI} (/+) [OR]
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule (.*) public/$1 [L]
