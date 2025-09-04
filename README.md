@@ -1,283 +1,152 @@
-## Hero Slider CMS
+# NGO Website - Hope Foundation
 
-This project now includes a dynamic Home page hero managed via Dashboard > Hero Slides.
-
-1. Log in to the dashboard and go to Hero Slides to add slides.
-2. Upload a background image and set overlay, title/subtitle styles, and buttons.
-
-Note: Ensure the storage symlink exists so uploaded images are accessible:
-
-```
-php artisan storage:link
-```
-
-# Hope Foundation - Non-Profit Organization Website
-
-A beautiful, responsive website built with Laravel for non-profit organizations. Features modern design, donation system, volunteer management, events, blog, and contact functionality.
+A comprehensive non-profit organization website built with Laravel, featuring modern design and full content management capabilities.
 
 ## 🌟 Features
 
-- **Modern Design**: Beautiful, responsive design with awesome animations and effects
-- **Donation System**: Secure donation forms with impact tracking
-- **Volunteer Management**: Comprehensive volunteer application system
-- **Event Management**: Event listings with registration capabilities
-- **Blog System**: Share stories, news, and updates
-- **Contact System**: Contact form with inquiry management
-- **Mobile Responsive**: Optimized for all devices
-- **SEO Optimized**: Search engine friendly structure
+### Frontend
+- **Modern Homepage** with hero slides, statistics counter, and impact areas
+- **Projects Showcase** with ongoing and completed project categories
+- **Team Management** with member profiles and roles
+- **Events & Notices** system for announcements
+- **Contact Forms** with email notifications
+- **Newsletter Subscription** with admin management
+- **Responsive Design** optimized for all devices
 
-## 🚀 Quick Start for cPanel Hosting
+### Admin Dashboard
+- **Hero Slides Management** with drag-and-drop uploads
+- **Statistics Management** with real-time counters
+- **Team Members Management** with photo uploads
+- **Partners Management** with logo displays
+- **Content Management** with rich text editor
+- **Media Library** for file management
+- **Newsletter Subscribers** management and export
+- **Contact Messages** inbox
 
-### Prerequisites
-- cPanel hosting account with PHP 8.1+
-- MySQL database
-- Composer (if available on hosting)
+## 🛠️ Tech Stack
 
-### Installation Steps
+- **Framework:** Laravel 10
+- **Database:** MySQL
+- **Frontend:** Bootstrap 5, AOS animations
+- **File Storage:** Laravel Storage with public disk
+- **Authentication:** Laravel built-in auth
+- **Rich Text Editor:** Integrated WYSIWYG editor
+- **Icons:** Font Awesome 6
 
-#### 1. Upload Files
-1. Download/extract all project files
-2. Upload the entire `nonprofit-website` folder to your hosting account
-3. Move contents of `public` folder to your domain's public folder (usually `public_html`)
-4. Keep the rest of the Laravel application files outside the public folder for security
+## 📦 Installation
 
-#### 2. Database Setup
-1. Create a new MySQL database in cPanel
-2. Import the database structure using these tables:
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/anandkanishkZ/ngo.git
+   cd ngo
+   ```
 
-```sql
--- Events table
-CREATE TABLE events (
-    id bigint(20) unsigned NOT NULL AUTO_INCREMENT,
-    title varchar(255) NOT NULL,
-    description text NOT NULL,
-    date date NOT NULL,
-    time time NOT NULL,
-    location varchar(255) NOT NULL,
-    image varchar(255) DEFAULT NULL,
-    max_participants int DEFAULT NULL,
-    registration_required tinyint(1) NOT NULL DEFAULT '0',
-    created_at timestamp NULL DEFAULT NULL,
-    updated_at timestamp NULL DEFAULT NULL,
-    PRIMARY KEY (id)
-);
+2. **Install dependencies**
+   ```bash
+   composer install
+   ```
 
--- Blog Posts table
-CREATE TABLE blog_posts (
-    id bigint(20) unsigned NOT NULL AUTO_INCREMENT,
-    title varchar(255) NOT NULL,
-    content text NOT NULL,
-    excerpt text NOT NULL,
-    image varchar(255) DEFAULT NULL,
-    author varchar(255) NOT NULL,
-    published_at timestamp NULL DEFAULT NULL,
-    created_at timestamp NULL DEFAULT NULL,
-    updated_at timestamp NULL DEFAULT NULL,
-    PRIMARY KEY (id)
-);
+3. **Environment setup**
+   ```bash
+   cp .env.example .env
+   php artisan key:generate
+   ```
 
--- Donations table
-CREATE TABLE donations (
-    id bigint(20) unsigned NOT NULL AUTO_INCREMENT,
-    donor_name varchar(255) NOT NULL,
-    donor_email varchar(255) NOT NULL,
-    donor_phone varchar(20) DEFAULT NULL,
-    amount decimal(10,2) NOT NULL,
-    donation_type enum('one-time','monthly') NOT NULL,
-    message text DEFAULT NULL,
-    status enum('pending','completed','failed') NOT NULL DEFAULT 'pending',
-    created_at timestamp NULL DEFAULT NULL,
-    updated_at timestamp NULL DEFAULT NULL,
-    PRIMARY KEY (id)
-);
+4. **Database configuration**
+   - Update `.env` with your database credentials
+   - Create database: `nonprofit_db`
 
--- Contacts table
-CREATE TABLE contacts (
-    id bigint(20) unsigned NOT NULL AUTO_INCREMENT,
-    name varchar(255) NOT NULL,
-    email varchar(255) NOT NULL,
-    subject varchar(255) NOT NULL,
-    message text NOT NULL,
-    status enum('new','read','replied') NOT NULL DEFAULT 'new',
-    created_at timestamp NULL DEFAULT NULL,
-    updated_at timestamp NULL DEFAULT NULL,
-    PRIMARY KEY (id)
-);
-```
+5. **Run migrations**
+   ```bash
+   php artisan migrate --seed
+   ```
 
-#### 3. Configuration
-1. Copy `.env.example` to `.env`
-2. Update database configuration in `.env`:
-```env
-DB_CONNECTION=mysql
-DB_HOST=localhost
-DB_PORT=3306
-DB_DATABASE=your_database_name
-DB_USERNAME=your_database_username
-DB_PASSWORD=your_database_password
-```
+6. **Storage setup**
+   ```bash
+   php artisan storage:link
+   ```
 
-3. Update app configuration:
-```env
-APP_NAME="Your Organization Name"
-APP_URL=https://yourdomain.com
-APP_ENV=production
-APP_DEBUG=false
-```
+7. **Start the server**
+   ```bash
+   php artisan serve
+   ```
 
-#### 4. File Permissions
-Set the following permissions:
-- `storage/` folder: 755
-- `bootstrap/cache/` folder: 755
-- All files: 644
-- All folders: 755
+## 🔐 Default Login
 
-#### 5. Generate Application Key
-Run this command or add manually to `.env`:
-```bash
-php artisan key:generate
-```
+- **Email:** admin@hope.org
+- **Password:** password
 
-If you can't run artisan commands, generate a random 32-character string and add to `.env`:
-```env
-APP_KEY=base64:YourGeneratedKeyHere
-```
+## 🎯 Key Modules
 
-## 📁 Directory Structure
+### 1. Hero Slides
+- Dynamic homepage banners
+- Multiple animation options
+- Background image uploads
+- Call-to-action buttons
 
-```
-nonprofit-website/
-├── app/
-│   ├── Http/Controllers/
-│   └── Models/
-├── database/
-│   ├── migrations/
-│   └── seeders/
-├── public/
-│   ├── css/
-│   ├── js/
-│   ├── images/
-│   └── index.php
-├── resources/views/
-├── routes/
-└── .env
-```
+### 2. Statistics Counter
+- Animated number counters
+- Icon customization
+- Order management
+- Real-time updates
 
-## 🎨 Customization
+### 3. Team Management
+- Member profiles with photos
+- Role assignments
+- Social media links
+- Featured members
 
-### Updating Content
-1. **Organization Name**: Update in `.env` file and `resources/views/layouts/app.blade.php`
-2. **Colors**: Modify CSS variables in `resources/views/layouts/app.blade.php`
-3. **Logo**: Replace logo references in navigation
-4. **Contact Information**: Update in footer and contact page
+### 4. Projects
+- Project categorization
+- Progress tracking
+- Image galleries
+- Status management
 
-### Adding Sample Data
-Run the database seeder to add sample events, blog posts, and donations:
-```bash
-php artisan db:seed
-```
+### 5. Newsletter System
+- Email collection
+- Subscriber management
+- Export functionality
+- Unsubscribe handling
 
-### Color Scheme
-The website uses these main colors:
-- Primary: #2c3e50 (Dark Blue)
-- Secondary: #e74c3c (Red)
-- Accent: #f39c12 (Orange)
-- Success: #27ae60 (Green)
+## 🎨 Design Features
 
-## 📱 Responsive Design
+- **Professional UI** with modern card-based layouts
+- **Smooth Animations** using AOS library
+- **Responsive Design** for mobile-first approach
+- **Color Scheme** optimized for non-profit branding
+- **Typography** carefully selected for readability
 
-The website is fully responsive and optimized for:
-- Desktop (1200px+)
-- Tablet (768px-1199px)
-- Mobile (up to 767px)
+## 🔄 Recent Updates
 
-## 🔧 Technical Features
+- ✅ Complete donation system removal
+- ✅ Hero slides form with WordPress-style UI
+- ✅ Statistics counter individual animations
+- ✅ Newsletter subscription system
+- ✅ Admin dashboard enhancements
+- ✅ Database optimizations
 
-- **Laravel Framework**: Robust PHP framework
-- **Bootstrap 5**: Modern CSS framework
-- **Font Awesome**: Icon library
-- **AOS (Animate On Scroll)**: Smooth animations
-- **Google Fonts**: Custom typography
-- **MySQL Database**: Reliable data storage
+## 🚀 Deployment
 
-## 🛡️ Security
+The project is ready for production deployment on:
+- Shared hosting (cPanel)
+- VPS/Cloud servers
+- Docker containers
 
-- CSRF protection on all forms
-- Input validation and sanitization
-- Environment variable configuration
-- SQL injection protection
-- XSS protection
+## 📝 License
 
-## 📧 Email Configuration
+Open-source project for educational and non-profit use.
 
-For contact forms and notifications, configure email in `.env`:
-```env
-MAIL_MAILER=smtp
-MAIL_HOST=your-smtp-host
-MAIL_PORT=587
-MAIL_USERNAME=your-email@domain.com
-MAIL_PASSWORD=your-email-password
-MAIL_ENCRYPTION=tls
-MAIL_FROM_ADDRESS=your-email@domain.com
-MAIL_FROM_NAME="${APP_NAME}"
-```
-
-## 🚀 Performance Optimization
-
-### For Production:
-1. Enable caching:
-```bash
-php artisan config:cache
-php artisan route:cache
-php artisan view:cache
-```
-
-2. Optimize images in `public/images/`
-3. Enable Gzip compression in cPanel
-4. Use a CDN for static assets
-
-## 🆘 Troubleshooting
-
-### Common Issues:
-
-1. **500 Internal Server Error**
-   - Check file permissions
-   - Verify `.env` configuration
-   - Check error logs in cPanel
-
-2. **Database Connection Error**
-   - Verify database credentials
-   - Ensure database exists
-   - Check database server status
-
-3. **CSS/JS Not Loading**
-   - Check file paths in views
-   - Verify files uploaded correctly
-   - Clear browser cache
-
-4. **Forms Not Working**
-   - Check CSRF token
-   - Verify form action URLs
-   - Check server error logs
-
-## 📄 License
-
-This project is open-source and available under the MIT License.
-
-## 🤝 Contributing
+## 👥 Contributing
 
 1. Fork the repository
-2. Create your feature branch
-3. Commit your changes
-4. Push to the branch
-5. Create a Pull Request
+2. Create a feature branch
+3. Make your changes
+4. Submit a pull request
 
 ## 📞 Support
 
-For support and customization services, contact:
-- Email: support@yourorganization.org
-- Website: https://yourorganization.org
+For issues and questions, please create an issue on GitHub or contact the development team.
 
 ---
 
-**Made with ❤️ for making the world a better place**
+**Built with ❤️ for non-profit organizations making a difference in the world.**
