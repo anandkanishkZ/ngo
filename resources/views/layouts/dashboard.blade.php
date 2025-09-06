@@ -362,6 +362,10 @@
             <span class="ds-icon fa-solid fa-envelope"></span>
             <span class="ds-label">Newsletter Subscribers</span>
           </a>
+          <a href="{{ route('dashboard.reports.index') }}" class="{{ request()->routeIs('dashboard.reports.*') ? 'active' : '' }}">
+            <span class="ds-icon fa-solid fa-file-alt"></span>
+            <span class="ds-label">Reports</span>
+          </a>
           <hr class="text-white-50">
           <form class="mt-2" method="POST" action="{{ route('logout') }}">@csrf
             <button class="btn w-100 text-start text-danger">

@@ -16,6 +16,7 @@ use App\Http\Controllers\PartnerController;
 use App\Http\Controllers\MediaController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\NewsletterController;
+use App\Http\Controllers\ReportController;
 use App\Http\Controllers\Dashboard\AttachmentController;
 use App\Http\Controllers\Dashboard\NewsletterController as DashboardNewsletterController;
 
@@ -98,6 +99,12 @@ Route::get('/events/{event}', [EventController::class, 'show'])->name('events.sh
 
 Route::get('/notices', [NoticeController::class, 'index'])->name('notices.index');
 Route::get('/notices/{notice}', [NoticeController::class, 'show'])->name('notices.show');
+
+// Reports
+Route::get('/reports', [ReportController::class, 'index'])->name('reports.index');
+Route::get('/reports/{report}', [ReportController::class, 'show'])->name('reports.show');
+Route::get('/reports/{report}/download', [ReportController::class, 'download'])->name('reports.download');
+Route::get('/reports/type/{type}', [ReportController::class, 'byType'])->name('reports.by-type');
 
 Route::get('/volunteer', function () {
     return view('volunteer');
@@ -269,6 +276,19 @@ Route::middleware('auth')->group(function(){
         Route::post('/{notice}/toggle-featured', [\App\Http\Controllers\Dashboard\NoticeController::class, 'toggleFeatured'])->name('toggle-featured');
         Route::post('/{notice}/quick-publish', [\App\Http\Controllers\Dashboard\NoticeController::class, 'quickPublish'])->name('quick-publish');
         Route::post('/bulk-action', [\App\Http\Controllers\Dashboard\NoticeController::class, 'bulkAction'])->name('bulk-action');
+    });
+
+    // Report Management routes
+    Route::prefix('dashboard/reports')->name('dashboard.reports.')->group(function(){
+        Route::get('/', [\App\Http\Controllers\Dashboard\ReportController::class, 'index'])->name('index');
+        Route::get('/create', [\App\Http\Controllers\Dashboard\ReportController::class, 'create'])->name('create');
+        Route::post('/', [\App\Http\Controllers\Dashboard\ReportController::class, 'store'])->name('store');
+        Route::get('/{report}', [\App\Http\Controllers\Dashboard\ReportController::class, 'show'])->name('show');
+        Route::get('/{report}/edit', [\App\Http\Controllers\Dashboard\ReportController::class, 'edit'])->name('edit');
+        Route::put('/{report}', [\App\Http\Controllers\Dashboard\ReportController::class, 'update'])->name('update');
+        Route::delete('/{report}', [\App\Http\Controllers\Dashboard\ReportController::class, 'destroy'])->name('destroy');
+        Route::post('/{report}/toggle-status', [\App\Http\Controllers\Dashboard\ReportController::class, 'toggleStatus'])->name('toggle-status');
+        Route::post('/{report}/toggle-featured', [\App\Http\Controllers\Dashboard\ReportController::class, 'toggleFeatured'])->name('toggle-featured');
     });
 
     // Newsletter Management routes

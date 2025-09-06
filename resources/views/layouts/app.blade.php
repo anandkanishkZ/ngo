@@ -1323,7 +1323,7 @@
                                         <a href="{{ route('notices.index') }}">Notices</a>
                                     </div>
                                 </li>
-                                <li><a href="#" class="">Reports</a></li>
+                                <li><a href="{{ route('reports.index') }}" class="{{ request()->routeIs('reports*') ? 'active' : '' }}">Reports</a></li>
                                 <li class="dropdown">
                                     <a href="#" class="{{ request()->routeIs('projects*') ? 'active' : '' }}">
                                         Projects <i class="fas fa-chevron-down ms-1" style="font-size: 0.8rem;"></i>
