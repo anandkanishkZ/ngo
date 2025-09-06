@@ -260,7 +260,6 @@
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
-    text-fill-color: transparent;
 }
 
 /* 3D Card Hover Effect */
@@ -666,10 +665,7 @@
 .enhanced-card[style*="background"]:hover,
 .enhanced-card[style]:hover {
     transform: translateY(-12px) translateZ(0) scale(1.02) !important;
-    box-shadow: 
-        0 20px 40px rgba(0, 0, 0, 0.08) !important,
-        0 12px 25px rgba(52, 152, 219, 0.06) !important,
-        0 6px 15px rgba(0, 0, 0, 0.05) !important;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08), 0 12px 25px rgba(52, 152, 219, 0.06), 0 6px 15px rgba(0, 0, 0, 0.05) !important;
     background: rgba(255, 255, 255, 1) !important;
     border-radius: 20px !important;
     filter: brightness(1.02) contrast(1.02) saturate(1.05) !important;
@@ -725,9 +721,7 @@
 
 .enhanced-card[style]:hover .process-number {
     transform: translateX(-50%) scale(1.08) !important;
-    box-shadow: 
-        0 8px 20px rgba(52, 152, 219, 0.3) !important, 
-        0 4px 12px rgba(0, 0, 0, 0.1) !important;
+    box-shadow: 0 8px 20px rgba(52, 152, 219, 0.3), 0 4px 12px rgba(0, 0, 0, 0.1) !important;
 }
 
 /* Ultra-Specific Text Animations */
