@@ -16,11 +16,6 @@ class AboutController extends Controller
         return view('about.index', compact('partners'));
     }
     
-    public function mission()
-    {
-        return view('about.mission');
-    }
-    
     public function team()
     {
         $teamMembers = TeamMember::getActiveMembers();

@@ -85,7 +85,6 @@ Route::get('/debug-stats', function () {
 });
 
 Route::get('/about', [AboutController::class, 'index'])->name('about');
-Route::get('/our-mission', [AboutController::class, 'mission'])->name('mission');
 Route::get('/our-team', [AboutController::class, 'team'])->name('team');
 
 // Projects

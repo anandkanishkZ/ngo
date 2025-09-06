@@ -1,8 +1,8 @@
 @extends('layouts.app')
 @php use Illuminate\Support\Facades\Storage; use Illuminate\Support\Str; use Illuminate\Support\Facades\File; @endphp
 
-@section('title', 'Hope Foundation - Making a Difference Together')
-@section('description', 'Join Hope Foundation in creating positive change in communities worldwide. Volunteer, support our mission, and be part of something bigger.')
+@section('title', 'JIDS Nepal - Empowering Communities Since 1995')
+@section('description', 'Jalpa Integrated Development Society (JIDS) is a non-profit organization in Udayapur, Nepal, working to uplift marginalized families through education, health, and community development since 1995.')
 
 @section('content')
     <!-- Hero Section (Dynamic Slider) -->
@@ -51,8 +51,8 @@
                 <div class="hero-slide" style="--overlay: linear-gradient(135deg, var(--primary-color), var(--secondary-color)); --overlay-opacity: .55;">
                     <div class="container">
                         <div class="hero-content" data-aos="fade-up">
-                            <h1 class="hero-title">Making a Difference <br><span class="text-warning">Together</span></h1>
-                            <p class="hero-subtitle">Join us in creating positive change in communities around the world through compassion, dedication, and meaningful action.</p>
+                            <h1 class="hero-title">Empowering Communities <br><span class="text-warning">Since 1995</span></h1>
+                            <p class="hero-subtitle">Join JIDS Nepal in creating lasting change in Udayapur and beyond through education, health, nutrition, and community development programs.</p>
                             <div class="hero-buttons">
                                 <a href="{{ route('volunteer') }}" class="btn btn-primary btn-lg">Get Involved</a>
                                 <a href="{{ route('about') }}" class="btn btn-secondary btn-lg">Learn More</a>
@@ -118,32 +118,33 @@
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-lg-6 mb-4" data-aos="fade-right">
-                    <h2 class="section-title text-start">About Hope Foundation</h2>
-                    <p class="lead mb-4">We are a dedicated non-profit organization committed to creating lasting positive change in communities worldwide.</p>
-                    <p>Since our founding, we have worked tirelessly to address critical issues including education, healthcare, poverty alleviation, and environmental sustainability. Our team of passionate volunteers and professionals work hand-in-hand with local communities to ensure our programs create meaningful, sustainable impact.</p>
+                    <h2 class="section-title text-start">About JIDS Nepal</h2>
+                    <p class="lead mb-4">Jalpa Integrated Development Society (JIDS) is a non-profit social organization based in Udayapur, Nepal, dedicated to uplifting marginalized communities since 1995.</p>
+                    <p>We work tirelessly to improve the lives of poor, marginalized families and children by enhancing education, health, nutrition, livelihood opportunities, water and sanitation access, disaster resilience, and climate change adaptation throughout Nepal.</p>
+                    <p>Through strategic community mobilization and partnerships with local governments, national and international organizations—including World Vision International Nepal—we empower adolescents, protect children from abuse, discrimination, and violence, and advocate for inclusive and equitable development.</p>
                     <div class="row mt-4">
                         <div class="col-6">
                             <div class="d-flex align-items-center mb-3">
                                 <i class="fas fa-check-circle text-success me-3 fs-4"></i>
-                                <span>Transparent Operations</span>
+                                <span>Community Mobilization</span>
                             </div>
                         </div>
                         <div class="col-6">
                             <div class="d-flex align-items-center mb-3">
                                 <i class="fas fa-check-circle text-success me-3 fs-4"></i>
-                                <span>Global Reach</span>
+                                <span>Child Protection</span>
                             </div>
                         </div>
                         <div class="col-6">
                             <div class="d-flex align-items-center mb-3">
                                 <i class="fas fa-check-circle text-success me-3 fs-4"></i>
-                                <span>Local Partnerships</span>
+                                <span>International Partnerships</span>
                             </div>
                         </div>
                         <div class="col-6">
                             <div class="d-flex align-items-center mb-3">
                                 <i class="fas fa-check-circle text-success me-3 fs-4"></i>
-                                <span>Sustainable Impact</span>
+                                <span>Climate Adaptation</span>
                             </div>
                         </div>
                     </div>

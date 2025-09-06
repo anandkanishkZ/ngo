@@ -1,6 +1,0 @@
-This is a test file for media upload functionality testing.
-
-File created for debugging Laravel media library upload issues.
-
-Date: September 1, 2025
-Purpose: Testing file upload in nonprofit website media library

@@ -1308,12 +1308,10 @@
                             <ul class="main-nav" id="mainNav">
                                 <li><a href="{{ route('home') }}" class="{{ request()->routeIs('home') ? 'active' : '' }}">Home</a></li>
                                 <li class="dropdown">
-                                    <a href="#" class="{{ request()->routeIs('about*') || request()->routeIs('mission') || request()->routeIs('team') ? 'active' : '' }}">
+                                    <a href="{{ route('about') }}" class="{{ request()->routeIs('about*') || request()->routeIs('team') ? 'active' : '' }}">
                                         About Us <i class="fas fa-chevron-down ms-1" style="font-size: 0.8rem;"></i>
                                     </a>
                                     <div class="dropdown-menu">
-                                        <a href="{{ route('about') }}">Our Story</a>
-                                        <a href="{{ route('mission') }}">Mission</a>
                                         <a href="{{ route('team') }}">Our Team</a>
                                     </div>
                                 </li>
@@ -1386,7 +1384,6 @@
                         <h6 class="footer-section-title">Explore</h6>
                         <ul class="footer-links">
                             <li><a href="{{ route('about') }}"><i class="fas fa-users"></i>About Us</a></li>
-                            <li><a href="{{ route('mission') }}"><i class="fas fa-bullseye"></i>Our Mission</a></li>
                             <li><a href="{{ route('team') }}"><i class="fas fa-user-friends"></i>Our Team</a></li>
                             <li><a href="{{ route('events') }}"><i class="fas fa-calendar-alt"></i>Events</a></li>
                             <li><a href="{{ route('notices.index') }}"><i class="fas fa-bullhorn"></i>Notices</a></li>

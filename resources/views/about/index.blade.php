@@ -1,15 +1,15 @@
 @extends('layouts.app')
 
-@section('title', 'About Us - Our Story | Hope Foundation')
-@section('description', 'Learn about Hope Foundation\'s mission, vision, and the passionate team working to create positive change worldwide.')
+@section('title', 'About JIDS Nepal - Our Story | JIDS Nepal')
+@section('description', 'Learn about JIDS Nepal\'s mission, vision, and our work empowering communities in Udayapur since 1995 through sustainable development programs.')
 
 @section('content')
     <!-- Hero Section -->
     <section class="hero-section" style="min-height: 60vh;">
         <div class="container">
             <div class="hero-content" data-aos="fade-up">
-                <h1 class="hero-title">Our <span class="text-warning">Story</span></h1>
-                <p class="hero-subtitle">Driven by compassion, united by purpose, creating lasting change together.</p>
+                <h1 class="hero-title">About <span class="text-warning">JIDS Nepal</span></h1>
+                <p class="hero-subtitle">Empowering communities in Udayapur since 1995, creating sustainable change together.</p>
             </div>
         </div>
     </section>
@@ -19,14 +19,14 @@
         <div class="container">
             <div class="row align-items-center mb-5">
                 <div class="col-lg-6" data-aos="fade-right">
-                    <h2 class="section-title text-start">How It All Began</h2>
-                    <p class="lead">Hope Foundation was born from a simple yet powerful belief: that every person deserves the opportunity to live with dignity, hope, and purpose.</p>
-                    <p>Founded in 2015 by a group of passionate individuals who witnessed firsthand the challenges facing communities around the world, our organization started with a mission to bridge the gap between those who want to help and those who need it most.</p>
-                    <p>What began as a small grassroots initiative has grown into a global movement, touching lives across 15 countries and impacting thousands of individuals and families. Our journey has been one of learning, growth, and unwavering commitment to our core values.</p>
+                    <h2 class="section-title text-start">How JIDS Nepal Began</h2>
+                    <p class="lead">JIDS Nepal was established in 1995 with a mission to empower marginalized communities and improve living standards through sustainable development programs.</p>
+                    <p>Founded in Udayapur, Nepal, our organization emerged from a deep understanding of the challenges facing rural communities lacking access to basic services and facilities. We began as a grassroots initiative committed to creating an equitable society through community-led development.</p>
+                    <p>Over nearly three decades, JIDS Nepal has grown into a respected development organization, working in partnership with World Vision International Nepal and other stakeholders to implement comprehensive programs in education, health, water and sanitation, environmental conservation, and income generation.</p>
                 </div>
                 <div class="col-lg-6" data-aos="fade-left">
                     <div class="about-image-wrapper">
-                        <img src="https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Our Beginning" class="img-fluid rounded shadow-lg">
+                        <img src="https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="JIDS Nepal Community Work" class="img-fluid rounded shadow-lg">
                     </div>
                 </div>
             </div>
@@ -52,19 +52,19 @@
                             <i class="fas fa-bullseye"></i>
                         </div>
                         <h3>Our Mission</h3>
-                        <p class="card-description">To empower communities through sustainable programs that address education, healthcare, poverty, and environmental challenges, creating lasting positive change that transforms lives and builds stronger, more resilient societies.</p>
+                        <p class="card-description">To create an equitable society by implementing programs in education, health, drinking water and sanitation, environmental conservation, and income generation for communities lacking access to basic services and facilities.</p>
                         <div class="mission-points mt-3">
                             <div class="point-item">
                                 <i class="fas fa-check-circle text-success me-2"></i>
-                                <small>Sustainable community development</small>
+                                <small>Education and health programs</small>
                             </div>
                             <div class="point-item">
                                 <i class="fas fa-check-circle text-success me-2"></i>
-                                <small>Education and capacity building</small>
+                                <small>Water and sanitation access</small>
                             </div>
                             <div class="point-item">
                                 <i class="fas fa-check-circle text-success me-2"></i>
-                                <small>Healthcare accessibility</small>
+                                <small>Environmental conservation</small>
                             </div>
                         </div>
                     </div>
@@ -77,19 +77,19 @@
                             <i class="fas fa-eye"></i>
                         </div>
                         <h3>Our Vision</h3>
-                        <p class="card-description">A world where every individual has access to the resources, opportunities, and support they need to thrive. We envision communities that are self-sufficient, educated, healthy, and environmentally sustainable.</p>
+                        <p class="card-description">To build a healthy, prosperous, self-reliant, and equitable society.</p>
                         <div class="vision-points mt-3">
                             <div class="point-item">
                                 <i class="fas fa-star text-warning me-2"></i>
-                                <small>Global equality and inclusion</small>
+                                <small>Healthy communities</small>
                             </div>
                             <div class="point-item">
                                 <i class="fas fa-star text-warning me-2"></i>
-                                <small>Self-sufficient communities</small>
+                                <small>Prosperous society</small>
                             </div>
                             <div class="point-item">
                                 <i class="fas fa-star text-warning me-2"></i>
-                                <small>Environmental sustainability</small>
+                                <small>Self-reliant and equitable</small>
                             </div>
                         </div>
                     </div>
@@ -101,20 +101,20 @@
                         <div class="icon-wrapper mb-4">
                             <i class="fas fa-target"></i>
                         </div>
-                        <h3>Our Goals</h3>
-                        <p class="card-description">Strategic objectives that guide our work and measure our impact, ensuring we create meaningful change in the communities we serve while maintaining accountability and transparency.</p>
+                        <h3>Our Goal</h3>
+                        <p class="card-description">To improve the living standards of the community.</p>
                         <div class="goals-list mt-3">
                             <div class="goal-item">
-                                <span class="goal-number">2030</span>
-                                <small>Impact 100,000 lives globally</small>
+                                <span class="goal-number">1995</span>
+                                <small>Serving since</small>
                             </div>
                             <div class="goal-item">
-                                <span class="goal-number">25+</span>
-                                <small>Countries with active programs</small>
+                                <span class="goal-number">Udayapur</span>
+                                <small>Based in Nepal</small>
                             </div>
                             <div class="goal-item">
                                 <span class="goal-number">100%</span>
-                                <small>Transparent fund allocation</small>
+                                <small>Community focused</small>
                             </div>
                         </div>
                     </div>
@@ -127,69 +127,132 @@
     <section class="section-padding">
         <div class="container">
             <div class="text-center mb-5" data-aos="fade-up">
-                <h2 class="section-title">Strategic Objectives</h2>
+                <h2 class="section-title">Objectives of the Organization</h2>
                 <p class="section-subtitle" style="font-size: 1.1rem; color: #666; max-width: 600px; margin: 0 auto;">
-                    Our key focus areas that drive measurable impact and sustainable change in communities worldwide.
+                    Our key objectives that guide our programs and drive sustainable development in marginalized communities.
                 </p>
             </div>
 
             <div class="row g-4">
-                <!-- Education Objective -->
+                <!-- Income Generation Objective -->
                 <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="100">
-                    <div class="objective-card text-center h-100">
-                        <div class="objective-icon">
-                            <i class="fas fa-graduation-cap"></i>
-                        </div>
-                        <h4>Education Access</h4>
-                        <p>Provide quality education and skill development programs to underserved communities, focusing on literacy, digital skills, and vocational training.</p>
-                        <div class="objective-target">
-                            <span class="target-number">50,000</span>
-                            <small class="text-muted">Students by 2030</small>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Healthcare Objective -->
-                <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="200">
-                    <div class="objective-card text-center h-100">
-                        <div class="objective-icon">
-                            <i class="fas fa-heartbeat"></i>
-                        </div>
-                        <h4>Healthcare Access</h4>
-                        <p>Improve healthcare accessibility through mobile clinics, preventive care programs, and health education initiatives in remote areas.</p>
-                        <div class="objective-target">
-                            <span class="target-number">30,000</span>
-                            <small class="text-muted">Lives impacted</small>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Economic Empowerment -->
-                <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="300">
                     <div class="objective-card text-center h-100">
                         <div class="objective-icon">
                             <i class="fas fa-seedling"></i>
                         </div>
-                        <h4>Economic Growth</h4>
-                        <p>Create sustainable livelihood opportunities through microfinance, entrepreneurship training, and community-based economic development projects.</p>
+                        <h4>Income Generation</h4>
+                        <p>Implement income-generating and service-oriented programs for the upliftment of poor and marginalized groups.</p>
                         <div class="objective-target">
-                            <span class="target-number">15,000</span>
-                            <small class="text-muted">Entrepreneurs supported</small>
+                            <span class="target-number">Programs</span>
+                            <small class="text-muted">For marginalized groups</small>
                         </div>
                     </div>
                 </div>
 
-                <!-- Environmental Sustainability -->
+                <!-- Coordination Objective -->
+                <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="200">
+                    <div class="objective-card text-center h-100">
+                        <div class="objective-icon">
+                            <i class="fas fa-handshake"></i>
+                        </div>
+                        <h4>Partnership</h4>
+                        <p>Expand coordination with national and international organizations to strengthen program effectiveness and reach.</p>
+                        <div class="objective-target">
+                            <span class="target-number">Global</span>
+                            <small class="text-muted">Partnerships</small>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Community Development -->
+                <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="300">
+                    <div class="objective-card text-center h-100">
+                        <div class="objective-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <h4>Community Leadership</h4>
+                        <p>Improve living standards through income-generating and physical infrastructure development programs under community leadership.</p>
+                        <div class="objective-target">
+                            <span class="target-number">Community</span>
+                            <small class="text-muted">Led development</small>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Health & Water -->
                 <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="400">
+                    <div class="objective-card text-center h-100">
+                        <div class="objective-icon">
+                            <i class="fas fa-tint"></i>
+                        </div>
+                        <h4>Water & Health</h4>
+                        <p>Reduce mortality from waterborne diseases through integrated drinking water, health, education, and sanitation programs.</p>
+                        <div class="objective-target">
+                            <span class="target-number">Integrated</span>
+                            <small class="text-muted">WASH programs</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Additional Objectives Row -->
+            <div class="row g-4 mt-4">
+                <!-- Environmental -->
+                <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="500">
                     <div class="objective-card text-center h-100">
                         <div class="objective-icon">
                             <i class="fas fa-leaf"></i>
                         </div>
-                        <h4>Environmental Care</h4>
-                        <p>Promote environmental conservation through reforestation, clean energy projects, and sustainable agriculture practices.</p>
+                        <h4>Environment</h4>
+                        <p>Carry out environmentally friendly programs to maintain ecological balance in our communities.</p>
                         <div class="objective-target">
-                            <span class="target-number">1M+</span>
-                            <small class="text-muted">Trees planted</small>
+                            <span class="target-number">Eco</span>
+                            <small class="text-muted">Friendly programs</small>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Child Rights -->
+                <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="600">
+                    <div class="objective-card text-center h-100">
+                        <div class="objective-icon">
+                            <i class="fas fa-child"></i>
+                        </div>
+                        <h4>Child Rights</h4>
+                        <p>Advocate for and implement programs to protect and promote child rights and welfare in our communities.</p>
+                        <div class="objective-target">
+                            <span class="target-number">Child</span>
+                            <small class="text-muted">Protection & welfare</small>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Empowerment -->
+                <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="700">
+                    <div class="objective-card text-center h-100">
+                        <div class="objective-icon">
+                            <i class="fas fa-female"></i>
+                        </div>
+                        <h4>Empowerment</h4>
+                        <p>Run necessary programs for the empowerment of women, children, Dalits, and indigenous communities.</p>
+                        <div class="objective-target">
+                            <span class="target-number">Inclusive</span>
+                            <small class="text-muted">Empowerment</small>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Community Development -->
+                <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="800">
+                    <div class="objective-card text-center h-100">
+                        <div class="objective-icon">
+                            <i class="fas fa-cogs"></i>
+                        </div>
+                        <h4>Other Activities</h4>
+                        <p>Undertake other activities as needed for comprehensive community development and progress.</p>
+                        <div class="objective-target">
+                            <span class="target-number">Flexible</span>
+                            <small class="text-muted">Development approach</small>
                         </div>
                     </div>
                 </div>
