@@ -82,7 +82,7 @@
     <!-- Filters and Search Section -->
     <section class="reports-filters-section py-4 border-bottom">
         <div class="container">
-            <form method="GET" action="{{ route('reports.index') }}" class="reports-filter-form" novalidate>
+            <form method="GET" action="{{ route('reports.index') }}" class="reports-filter-form">
                 <div class="row g-3 align-items-end">
                     <div class="col-lg-3 col-md-6">
                         <label class="form-label">Search Reports</label>
@@ -399,12 +399,6 @@
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-}
-
-/* Hide validation feedback messages for filter forms */
-.reports-filter-form .valid-feedback,
-.reports-filter-form .invalid-feedback {
-    display: none !important;
 }
 
 .filter-buttons {

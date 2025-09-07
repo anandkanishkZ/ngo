@@ -25,10 +25,11 @@
                             <i class="fas fa-map-marker-alt"></i>
                         </div>
                         <h3>Visit Our Office</h3>
-                        <p>Hope Foundation Headquarters<br>
-                        Bhairahawa-11, Rupandehi<br>
-                        Lumbini Province, Nepal</p>
-                        <a href="https://maps.google.com/?q=Bhairahawa+Rupandehi+Nepal" target="_blank" class="contact-link">
+                        <p>JIDS Nepal<br>
+                        Triyuga Municipality 11, Udayapur<br>
+                        Sangam Tole, Pragati Marg<br>
+                        Nepal</p>
+                        <a href="https://maps.google.com/?q=Triyuga+Municipality+Udayapur+Nepal" target="_blank" class="contact-link">
                             <i class="fas fa-external-link-alt"></i> View on Map
                         </a>
                     </div>
@@ -41,10 +42,7 @@
                             <i class="fas fa-phone"></i>
                         </div>
                         <h3>Call Us</h3>
-                        <p>Main Office: <a href="tel:+977-76-561155" class="phone-link">+977-76-561155</a><br>
-                        Alternative: <a href="tel:+977-76-561336" class="phone-link">+977-76-561336</a><br>
-                        Mobile: <a href="tel:+977-9857050251" class="phone-link">+977-9857050251</a><br>
-                        Toll Free: <a href="tel:16607656155" class="phone-link">16607656155</a></p>
+                        <p>Main Office: <a href="tel:+977035420928" class="phone-link">+977035420928</a></p>
                         <small class="text-muted">Available Mon-Fri 9:00 AM - 6:00 PM</small>
                     </div>
                 </div>
@@ -56,9 +54,7 @@
                             <i class="fas fa-envelope"></i>
                         </div>
                         <h3>Email Us</h3>
-                        <p>General Inquiries: <a href="mailto:info@hopefoundation.org" class="email-link">info@hopefoundation.org</a><br>
-                        Partnerships: <a href="mailto:partnerships@hopefoundation.org" class="email-link">partnerships@hopefoundation.org</a><br>
-                        Media: <a href="mailto:media@hopefoundation.org" class="email-link">media@hopefoundation.org</a></p>
+                        <p>General Inquiries: <a href="mailto:info@jidsnepal.org.np" class="email-link">info@jidsnepal.org.np</a></p>
                         <small class="text-muted">We typically respond within 24 hours</small>
                     </div>
                 </div>
@@ -168,7 +164,6 @@
                                         <option value="">Select inquiry type</option>
                                         <option value="general" {{ old('inquiry_type') == 'general' ? 'selected' : '' }}>General Information</option>
                                         <option value="volunteer" {{ old('inquiry_type') == 'volunteer' ? 'selected' : '' }}>Volunteering</option>
-                                        <option value="donation" {{ old('inquiry_type') == 'donation' ? 'selected' : '' }}>Donations</option>
                                         <option value="partnership" {{ old('inquiry_type') == 'partnership' ? 'selected' : '' }}>Partnerships</option>
                                         <option value="media" {{ old('inquiry_type') == 'media' ? 'selected' : '' }}>Media & Press</option>
                                         <option value="support" {{ old('inquiry_type') == 'support' ? 'selected' : '' }}>Technical Support</option>

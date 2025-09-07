@@ -19,6 +19,7 @@ use App\Http\Controllers\NewsletterController;
 use App\Http\Controllers\ReportController;
 use App\Http\Controllers\Dashboard\AttachmentController;
 use App\Http\Controllers\Dashboard\NewsletterController as DashboardNewsletterController;
+use App\Http\Controllers\Dashboard\ContactMessageController;
 
 /*
 |--------------------------------------------------------------------------
@@ -33,57 +34,6 @@ use App\Http\Controllers\Dashboard\NewsletterController as DashboardNewsletterCo
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
-// Test route to check statistics
-Route::get('/test-stats', function () {
-    $stats = App\Models\Statistic::all();
-    return $stats->pluck('value', 'label');
-});
-
-// Test route to check projects
-Route::get('/test-projects', function () {
-    $projects = App\Models\Project::all();
-    return [
-        'total_projects' => $projects->count(),
-        'ongoing_projects' => $projects->where('status', 'ongoing')->count(),
-        'completed_projects' => $projects->where('status', 'completed')->count(),
-        'projects' => $projects->map(function($p) {
-            return [
-                'title' => $p->title,
-                'status' => $p->status,
-                'category' => $p->category,
-                'beneficiaries' => $p->beneficiaries,
-                'funding_progress' => $p->funding_progress
-            ];
-        })
-    ];
-});
-
-// Debug route to check statistics with cache
-Route::get('/debug-stats', function () {
-    $cached = App\Models\Statistic::getActiveStats();
-    $fresh = App\Models\Statistic::orderBy('sort_order')->get();
-    
-    return [
-        'cached_stats' => $cached->map(function($stat) {
-            return [
-                'key' => $stat->key,
-                'label' => $stat->label, 
-                'value' => $stat->value,
-                'is_active' => $stat->is_active
-            ];
-        }),
-        'fresh_stats' => $fresh->map(function($stat) {
-            return [
-                'key' => $stat->key,
-                'label' => $stat->label,
-                'value' => $stat->value,
-                'is_active' => $stat->is_active
-            ];
-        }),
-        'cache_key_exists' => \Cache::has('statistics_active'),
-        'timestamp' => now()
-    ];
-});
 
 Route::get('/about', [AboutController::class, 'index'])->name('about');
 Route::get('/our-team', [AboutController::class, 'team'])->name('team');
@@ -118,60 +68,6 @@ Route::post('/contact', [ContactController::class, 'store'])->name('contact.stor
 Route::post('/newsletter/subscribe', [NewsletterController::class, 'store'])->name('newsletter.subscribe');
 Route::post('/newsletter/unsubscribe', [NewsletterController::class, 'unsubscribe'])->name('newsletter.unsubscribe');
 
-// Newsletter Test Route
-Route::get('/test-newsletter', function() {
-    $testEmail = 'test@example.com';
-    $results = [];
-    
-    // Test Newsletter Model
-    try {
-        $newsletter = new \App\Models\Newsletter();
-        $results['model'] = '✅ Newsletter Model: OK';
-    } catch (Exception $e) {
-        $results['model'] = '❌ Newsletter Model: ' . $e->getMessage();
-    }
-    
-    // Test Database Schema
-    try {
-        $columns = Schema::getColumnListing('newsletters');
-        $results['schema'] = '✅ Database Table: newsletters - Columns: ' . implode(', ', $columns);
-    } catch (Exception $e) {
-        $results['schema'] = '❌ Database Table: ' . $e->getMessage();
-    }
-    
-    // Test Routes
-    $routes = [
-        'newsletter.subscribe',
-        'dashboard.newsletters.index',
-    ];
-    
-    foreach ($routes as $route) {
-        try {
-            $url = route($route);
-            $results['route_' . $route] = "✅ Route '{$route}': {$url}";
-        } catch (Exception $e) {
-            $results['route_' . $route] = "❌ Route '{$route}': " . $e->getMessage();
-        }
-    }
-    
-    // Statistics
-    try {
-        $total = \App\Models\Newsletter::count();
-        $active = \App\Models\Newsletter::where('is_active', true)->count();
-        $results['stats'] = "✅ Current Subscribers: Total: {$total}, Active: {$active}";
-    } catch (Exception $e) {
-        $results['stats'] = '❌ Stats: ' . $e->getMessage();
-    }
-    
-    $html = '<h1>Newsletter System Test Results</h1>';
-    foreach ($results as $key => $result) {
-        $html .= '<p>' . $result . '</p>';
-    }
-    $html .= '<hr><p><strong>System Status: OPERATIONAL</strong></p>';
-    $html .= '<p><a href="/">← Back to Home</a> | <a href="/dashboard/newsletters">Admin Panel →</a></p>';
-    
-    return $html;
-});
 
 // Auth
 Route::get('/login', [AuthController::class, 'showLogin'])->name('login');
@@ -299,37 +195,15 @@ Route::middleware('auth')->group(function(){
         Route::patch('/{newsletter}/toggle', [DashboardNewsletterController::class, 'toggleStatus'])->name('toggle');
         Route::get('/export/csv', [DashboardNewsletterController::class, 'export'])->name('export');
     });
+
+    // Contact Messages Management routes
+    Route::prefix('dashboard/contact-messages')->name('dashboard.contact-messages.')->group(function(){
+        Route::get('/', [ContactMessageController::class, 'index'])->name('index');
+        Route::get('/{contactMessage}', [ContactMessageController::class, 'show'])->name('show');
+        Route::patch('/{contactMessage}/status', [ContactMessageController::class, 'updateStatus'])->name('update-status');
+        Route::delete('/{contactMessage}', [ContactMessageController::class, 'destroy'])->name('destroy');
+        Route::post('/bulk-update', [ContactMessageController::class, 'bulkUpdate'])->name('bulk-update');
+        Route::get('/export/csv', [ContactMessageController::class, 'export'])->name('export');
+    });
 });
 
-// Team system status check (temporary for debugging)
-Route::get('/team-status', function() {
-    if (!auth()->check()) {
-        return response()->json(['error' => 'Authentication required'], 401);
-    }
-    
-    try {
-        $totalMembers = App\Models\TeamMember::count();
-        $activeMembers = App\Models\TeamMember::where('is_active', true)->count();
-        $featuredMembers = App\Models\TeamMember::where('featured', true)->count();
-        
-        return response()->json([
-            'success' => true,
-            'status' => 'Team system operational',
-            'statistics' => [
-                'total_members' => $totalMembers,
-                'active_members' => $activeMembers,
-                'featured_members' => $featuredMembers
-            ],
-            'routes' => [
-                'index' => route('dashboard.team.index'),
-                'create' => route('dashboard.team.create'),
-                'destroy_example' => $totalMembers > 0 ? route('dashboard.team.destroy', 1) : 'No members available'
-            ]
-        ]);
-    } catch (\Exception $e) {
-        return response()->json([
-            'success' => false,
-            'error' => $e->getMessage()
-        ], 500);
-    }
-});

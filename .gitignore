@@ -27,3 +27,18 @@ yarn-error.log
 /.fleet
 /.idea
 /.vscode
+
+# Debug/test artifact ignores
+/test_*.php
+/debug_*.php
+/check_users.php
+/create_favicon.html
+/fix_migration.php
+/get_nepal_time.php
+/public/test.php
+/public/phpinfo.php
+/public/test-*.html
+/public/debug-*.html
+/public/diagnostic.html
+/public/status.html
+/public/route-test.html

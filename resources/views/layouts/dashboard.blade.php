@@ -362,6 +362,16 @@
             <span class="ds-icon fa-solid fa-envelope"></span>
             <span class="ds-label">Newsletter Subscribers</span>
           </a>
+          <a href="{{ route('dashboard.contact-messages.index') }}" class="{{ request()->routeIs('dashboard.contact-messages.*') ? 'active' : '' }}">
+            <span class="ds-icon fa-solid fa-comments"></span>
+            <span class="ds-label">Contact Messages</span>
+            @php
+                $unreadCount = \App\Models\ContactMessage::unread()->count();
+            @endphp
+      @if($unreadCount > 0)
+        <span class="badge rounded-pill text-bg-danger ms-auto">{{ $unreadCount }}</span>
+      @endif
+          </a>
           <a href="{{ route('dashboard.reports.index') }}" class="{{ request()->routeIs('dashboard.reports.*') ? 'active' : '' }}">
             <span class="ds-icon fa-solid fa-file-alt"></span>
             <span class="ds-label">Reports</span>

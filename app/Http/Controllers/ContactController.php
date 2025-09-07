@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
+use App\Models\ContactMessage;
 
 class ContactController extends Controller
 {
@@ -43,17 +44,26 @@ class ContactController extends Controller
         }
 
         try {
-            // In a real application, you would send an email here
-            // For now, we'll just return a success message
-            
-            // Example email sending code:
+            // Save the contact message to database
+            $contactMessage = ContactMessage::create([
+                'name' => $request->name,
+                'email' => $request->email,
+                'phone' => $request->phone,
+                'subject' => $request->subject,
+                'message' => $request->message,
+                'inquiry_type' => $request->inquiry_type,
+                'ip_address' => $request->ip(),
+                'status' => 'unread'
+            ]);
+
+            // Send email notification (optional)
             // Mail::send('emails.contact', $request->all(), function($message) use ($request) {
-            //     $message->to('info@hopefoundation.org')
+            //     $message->to('info@jidsnepal.org.np')
             //             ->subject('Contact Form: ' . $request->subject)
             //             ->replyTo($request->email, $request->name);
             // });
 
-            return back()->with('success', 'Thank you for your message! We will get back to you within 24 hours.');
+            return back()->with('success', 'Thank you for your message! We have received your inquiry and will get back to you within 24 hours.');
             
         } catch (\Exception $e) {
             return back()
