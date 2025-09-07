@@ -45,7 +45,7 @@ class ContactMessageController extends Controller
             'archived' => ContactMessage::archived()->count(),
         ];
 
-    // Use a clean clone of the view to avoid any local encoding or compiled cache issues
+    // Temporarily use the known-good clone to avoid raw blade rendering
     return view('dashboard.contact-messages.index_fixed', compact('messages', 'stats'));
     }
 
