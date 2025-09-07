@@ -3,7 +3,6 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use App\Models\Event;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 
@@ -14,33 +13,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // Seed Events
-        Event::create([
-            'title' => 'Annual Charity Gala',
-            'description' => 'Join us for an elegant evening of fundraising and celebration as we support education initiatives worldwide.',
-            'date' => '2024-06-15',
-            'time' => '18:00:00',
-            'location' => 'Grand Ballroom, Downtown Hotel',
-            'image' => 'gala-event.jpg',
-            'max_participants' => 200,
-            'registration_required' => true,
-        ]);
-
-        Event::create([
-            'title' => 'Community Garden Project',
-            'description' => 'Help us plant and maintain a community garden that will provide fresh produce for local families.',
-            'date' => '2024-07-22',
-            'time' => '09:00:00',
-            'location' => 'Riverside Community Center',
-            'image' => 'garden-project.jpg',
-            'max_participants' => 50,
-            'registration_required' => true,
-        ]);
-
-        Event::create([
-            'title' => 'Educational Workshop: Digital Literacy',
-            'description' => 'Free workshop teaching basic computer skills and internet safety to community members.',
-            'date' => '2024-08-10',
+    // Events removed
             'time' => '14:00:00',
             'location' => 'Public Library, Main Branch',
             'image' => 'digital-literacy.jpg',

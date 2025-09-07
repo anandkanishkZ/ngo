@@ -171,34 +171,7 @@
   </div>
 </section>
 
-<!-- Newsletter Subscription Section -->
-<section class="newsletter-section">
-  <div class="container">
-    <div class="newsletter-card">
-      <div class="row align-items-center">
-        <div class="col-lg-6">
-          <div class="newsletter-content">
-            <h3 class="newsletter-title">Never Miss Important Updates</h3>
-            <p class="newsletter-text">Subscribe to get instant notifications about important notices and announcements.</p>
-          </div>
-        </div>
-        <div class="col-lg-6">
-          <div class="newsletter-form">
-            <form class="subscription-form">
-              <div class="form-group">
-                <input type="email" class="form-input" placeholder="Enter your email address" required>
-                <button type="submit" class="form-submit">
-                  <span>Subscribe</span>
-                  <i class="fas fa-paper-plane"></i>
-                </button>
-              </div>
-            </form>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+<!-- Newsletter subscription CTA removed as requested -->
 
 </div>
 <!-- End wrapper class -->

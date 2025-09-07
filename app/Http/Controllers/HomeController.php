@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Event;
 use App\Models\HeroSlide;
 use App\Models\Statistic;
 use App\Models\ImpactArea;
@@ -13,10 +12,7 @@ class HomeController extends Controller
 {
     public function index()
     {
-        $upcomingEvents = Event::where('date', '>=', now())
-                              ->orderBy('date', 'asc')
-                              ->take(3)
-                              ->get();
+    // Events feature removed
         
         $heroSlides = HeroSlide::where('is_active', true)->orderBy('position')->get();
         
@@ -29,6 +25,6 @@ class HomeController extends Controller
         // Get dynamic partners
         $partners = Partner::getActivePartners();
         
-        return view('home', compact('upcomingEvents', 'heroSlides', 'statistics', 'impactAreas', 'partners'));
+    return view('home', compact('heroSlides', 'statistics', 'impactAreas', 'partners'));
     }
 }

@@ -54,7 +54,7 @@
                             <h1 class="hero-title">Empowering Communities <br><span class="text-warning">Since 1995</span></h1>
                             <p class="hero-subtitle">Join JIDS Nepal in creating lasting change in Udayapur and beyond through education, health, nutrition, and community development programs.</p>
                             <div class="hero-buttons">
-                                <a href="{{ route('volunteer') }}" class="btn btn-primary btn-lg">Get Involved</a>
+                                <a href="{{ route('contact') }}" class="btn btn-primary btn-lg">Get Involved</a>
                                 <a href="{{ route('about') }}" class="btn btn-secondary btn-lg">Learn More</a>
                             </div>
                         </div>
@@ -345,49 +345,7 @@
         </div>
     </section>
 
-    <!-- Recent Events Section -->
-    @if($upcomingEvents && $upcomingEvents->count() > 0)
-    <section class="section-padding bg-light">
-        <div class="container">
-            <h2 class="section-title" data-aos="fade-up">Upcoming Events</h2>
-            <div class="row">
-                @foreach($upcomingEvents as $event)
-                <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="{{ $loop->index * 100 + 100 }}">
-                    <div class="custom-card">
-                                                @php
-                                                    $evRaw = $event->image;
-                                                    $evSrc = null;
-                                                    if ($evRaw) {
-                                                        if (Str::startsWith($evRaw,['http://','https://'])) { $evSrc = $evRaw; }
-                                                        else {
-                                                            $evPath = public_path('images/'.ltrim($evRaw,'/'));
-                                                            $evSrc = File::exists($evPath) ? asset('images/'.ltrim($evRaw,'/')) : null;
-                                                        }
-                                                    }
-                                                    $evSrc = $evSrc ?: 'https://images.unsplash.com/photo-1511632765486-a01980e01a18?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80';
-                                                @endphp
-                                                <img src="{{ $evSrc }}" class="card-img-top" alt="{{ $event->title }}">
-                        <div class="card-body">
-                            <div class="event-date text-primary fw-bold mb-2">
-                                <i class="fas fa-calendar-alt me-2"></i>{{ $event->date->format('M d, Y') }}
-                            </div>
-                            <h5 class="card-title">{{ $event->title }}</h5>
-                            <p class="card-text">{{ Str::limit($event->description, 100) }}</p>
-                            <div class="d-flex justify-content-between align-items-center">
-                                <small class="text-muted"><i class="fas fa-map-marker-alt me-1"></i>{{ $event->location }}</small>
-                                <a href="{{ route('events.show', $event) }}" class="btn btn-outline-primary btn-sm">Learn More</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                @endforeach
-            </div>
-            <div class="text-center mt-4">
-                <a href="{{ route('events') }}" class="btn btn-primary">View All Events</a>
-            </div>
-        </div>
-    </section>
-    @endif
+    <!-- Events section removed -->
 
     <!-- Partners & Sponsors Section -->
     <section class="partners-section section-padding" style="background: #f8f9fa;">

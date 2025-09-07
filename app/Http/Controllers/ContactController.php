@@ -33,7 +33,7 @@ class ContactController extends Controller
             'phone' => 'nullable|string|max:20',
             'subject' => 'required|string|max:255',
             'message' => 'required|string|min:10',
-            'inquiry_type' => 'required|string|in:general,volunteer,partnership,media,support',
+            'inquiry_type' => 'required|string|in:general,partnership,media,support',
         ]);
 
         if ($validator->fails()) {

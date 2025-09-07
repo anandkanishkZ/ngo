@@ -117,7 +117,7 @@
           <select name="inquiry_type" id="inquiry_type" class="form-control">
             <option value="">All Types</option>
             <option value="general" {{ request('inquiry_type') === 'general' ? 'selected' : '' }}>General</option>
-            <option value="volunteer" {{ request('inquiry_type') === 'volunteer' ? 'selected' : '' }}>Volunteer</option>
+            {{-- Volunteer removed --}}
             <option value="partnership" {{ request('inquiry_type') === 'partnership' ? 'selected' : '' }}>Partnership</option>
             <option value="media" {{ request('inquiry_type') === 'media' ? 'selected' : '' }}>Media</option>
             <option value="support" {{ request('inquiry_type') === 'support' ? 'selected' : '' }}>Support</option>

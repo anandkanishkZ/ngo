@@ -85,13 +85,12 @@ Artisan::command('test:homepage-sections', function () {
     $heroSlides = \App\Models\HeroSlide::where('is_active', true)->count();
     $statistics = \App\Models\Statistic::where('is_active', true)->count();
     $impactAreas = \App\Models\ImpactArea::where('is_active', true)->count();
-    $events = \App\Models\Event::where('date', '>=', now())->count();
     
     $this->info('📊 Homepage Data Summary:');
     $this->line("  🎬 Hero Slides: {$heroSlides} active");
     $this->line("  📈 Statistics: {$statistics} active");
     $this->line("  🎯 Impact Areas: {$impactAreas} active");
-    $this->line("  📅 Upcoming Events: {$events}");
+    // 📅 Events removed from the site
     
     $this->info('');
     $this->info('🆕 New Professional Sections Added:');
@@ -100,13 +99,12 @@ Artisan::command('test:homepage-sections', function () {
     $this->line('     - Parent, Community Leader, and Volunteer perspectives');
     $this->line('     - Modern card design with hover effects');
     
-    $this->line('  ✅ Partners & Sponsors Section');
     $this->line('     - 6 major international organizations');
     $this->line('     - Interactive logo grid with hover effects');
     $this->line('     - Builds credibility and trust');
     
     $this->line('  ✅ How We Work Process Section');
-    $this->line('     - 4-step transparent methodology');
+        // Events removed
     $this->line('     - Visual icons and numbered progression');
     $this->line('     - Demonstrates professional approach');
     
@@ -133,8 +131,7 @@ Artisan::command('test:homepage-sections', function () {
     $this->line('  6. 🤝 Partners & Sponsors (NEW - Credibility)');
     $this->line('  7. ⚙️ How We Work Process (NEW - Transparency)');
     $this->line('  8. 📧 Newsletter Subscription (NEW - Engagement)');
-    $this->line('  9. 📅 Upcoming Events');
-    $this->line('  10. 🎯 Call to Action');
+    $this->line('  9. 🎯 Call to Action');
     
     $this->info('');
     $this->info('✨ Professional Standards Achieved:');

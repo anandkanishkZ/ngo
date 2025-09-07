@@ -35,8 +35,8 @@
                     <a href="{{ route('home') }}" class="btn btn-primary btn-lg me-3">
                         <i class="fas fa-home me-2"></i>Go Home
                     </a>
-                    <a href="{{ route('volunteer') }}" class="btn btn-outline-light btn-lg">
-                        <i class="fas fa-hands-helping me-2"></i>Join Us
+                        <a href="{{ route('contact') }}" class="btn btn-outline-light btn-lg">
+                            <i class="fas fa-envelope me-2"></i>Contact Us
                     </a>
                 </div>
 

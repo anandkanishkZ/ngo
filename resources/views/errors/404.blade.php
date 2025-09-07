@@ -50,8 +50,8 @@
                             </div>
                             <h4>Make a Donation</h4>
                             <p>Support our cause</p>
-                            <a href="{{ route('volunteer') }}" class="btn-suggestion btn-success">
-                                <i class="fas fa-hands-helping me-2"></i>Volunteer
+                            <a href="{{ route('contact') }}" class="btn-suggestion btn-success">
+                                <i class="fas fa-envelope me-2"></i>Contact Us
                             </a>
                         </div>
 
@@ -61,8 +61,8 @@
                             </div>
                             <h4>Volunteer</h4>
                             <p>Join our mission</p>
-                            <a href="{{ route('volunteer') }}" class="btn-suggestion btn-warning">
-                                <i class="fas fa-hands-helping me-2"></i>Volunteer
+                            <a href="{{ route('contact') }}" class="btn-suggestion btn-warning">
+                                <i class="fas fa-envelope me-2"></i>Contact Us
                             </a>
                         </div>
                     </div>

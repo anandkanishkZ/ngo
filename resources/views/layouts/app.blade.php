@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@yield('title', 'Hope Foundation - Making a Difference')</title>
+    <title>@yield('title', 'JIDS Nepal - Empowering Udayapur since 1995')</title>
     <meta name="description" content="@yield('description', 'Join us in making a positive impact on communities around the world.')">
     
     <!-- Bootstrap CSS -->
@@ -1245,39 +1245,16 @@
     <div class="top-header">
         <div class="container">
             <div class="row align-items-center">
-                <div class="col-md-8">
+                <div class="col-12">
                     <div class="contact-info">
-                        <a href="tel:+977-76-561155/561336" class="contact-item">
+                        <a href="tel:+977035420928" class="contact-item">
                             <i class="fas fa-phone"></i>
-                            +977-76-561155/561336
+                            +977 035-420928
                         </a>
-                        <a href="tel:+977-9857050251" class="contact-item">
-                            <i class="fas fa-phone"></i>
-                            +977-9857050251
-                        </a>
-                        <a href="mailto:info@hopefoundation.org" class="contact-item">
+                        <a href="mailto:info@jidsnepal.org.np" class="contact-item">
                             <i class="fas fa-envelope"></i>
-                            info@hopefoundation.org
+                            info@jidsnepal.org.np
                         </a>
-                    </div>
-                </div>
-                <div class="col-md-4 text-end">
-                    <div class="d-flex align-items-center justify-content-end gap-2">
-                        <span class="contact-item me-2">
-                            <i class="fas fa-phone me-1"></i>
-                            Toll Free: 16607656155
-                        </span>
-                        <div class="social-links">
-                            <a href="#" aria-label="Facebook" title="Follow us on Facebook">
-                                <i class="fab fa-facebook-f"></i>
-                            </a>
-                            <a href="#" aria-label="Instagram" title="Follow us on Instagram">
-                                <i class="fab fa-instagram"></i>
-                            </a>
-                            <a href="#" aria-label="Twitter" title="Follow us on Twitter">
-                                <i class="fab fa-twitter"></i>
-                            </a>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -1290,12 +1267,9 @@
             <div class="row align-items-center">
                 <div class="col-md-4">
                     <div class="logo-section">
-                        <div class="logo-circle">
-                            <i class="fas fa-heart" style="color: var(--secondary-color); font-size: 1.5rem;"></i>
-                        </div>
                         <div>
-                            <h1 class="logo-text">HOPE</h1>
-                            <p class="logo-tagline">For healthy & happy lives</p>
+                            <h1 class="logo-text">JIDS Nepal</h1>
+                            <p class="logo-tagline">Empowering communities in Udayapur since 1995</p>
                         </div>
                     </div>
                 </div>
@@ -1357,10 +1331,10 @@
                         <div class="footer-brand">
                             <a href="{{ route('home') }}" class="footer-logo">
                                 <i class="fas fa-heart"></i>
-                                Hope Foundation
+                                JIDS Nepal
                             </a>
                             <p class="footer-description">
-                                Empowering communities worldwide through compassionate action, sustainable development, and unwavering dedication to creating positive change for a better tomorrow.
+                                JIDS Nepal is a community-based organization established in 1995 in Udayapur. We empower marginalized communities through education, health, WASH, environmental conservation, and livelihood programs to build a healthy, prosperous, and self‑reliant society.
                             </p>
                             <div class="social-links">
                                 <a href="#" class="social-link" title="Facebook">
@@ -1385,7 +1359,7 @@
                         <ul class="footer-links">
                             <li><a href="{{ route('about') }}"><i class="fas fa-users"></i>About Us</a></li>
                             <li><a href="{{ route('team') }}"><i class="fas fa-user-friends"></i>Our Team</a></li>
-                            <li><a href="{{ route('events') }}"><i class="fas fa-calendar-alt"></i>Events</a></li>
+                            
                             <li><a href="{{ route('notices.index') }}"><i class="fas fa-bullhorn"></i>Notices</a></li>
                         </ul>
                     </div>
@@ -1394,7 +1368,7 @@
                     <div class="col-lg-2 col-md-6">
                         <h6 class="footer-section-title">Take Action</h6>
                         <ul class="footer-links">
-                            <li><a href="{{ route('volunteer') }}"><i class="fas fa-hands-helping"></i>Volunteer</a></li>
+                            {{-- Volunteer removed --}}
                             <li><a href="#"><i class="fas fa-newspaper"></i>Newsletter</a></li>
                             <li><a href="#"><i class="fas fa-share-alt"></i>Share</a></li>
                             <li><a href="{{ route('contact') }}"><i class="fas fa-envelope"></i>Contact Us</a></li>
@@ -1409,22 +1383,22 @@
                                 <i class="fas fa-map-marker-alt"></i>
                                 <div>
                                     <strong>Headquarters</strong><br>
-                                    123 Hope Street, Innovation District<br>
-                                    City Center, State 12345
+                                    Triyuga Municipality - 11, Sangam Tole, Pragati Marg<br>
+                                    Udayapur, Nepal
                                 </div>
                             </li>
                             <li>
                                 <i class="fas fa-phone"></i>
                                 <div>
                                     <strong>Phone</strong><br>
-                                    +1 (555) 123-4567
+                                    +977 035-420928
                                 </div>
                             </li>
                             <li>
                                 <i class="fas fa-envelope"></i>
                                 <div>
                                     <strong>Email</strong><br>
-                                    hello@hopefoundation.org
+                                    info@jidsnepal.org.np
                                 </div>
                             </li>
                         </ul>
@@ -1437,10 +1411,10 @@
             <div class="container">
                 <div class="footer-bottom-content">
                     <p class="copyright">
-                        &copy; {{ date('Y') }} Hope Foundation. All rights reserved. 
+                        &copy; {{ date('Y') }} JIDS Nepal. All rights reserved. 
                     </p>
                     <p class="developer-credit">
-                        Developed by: <a href="https://zwickytechnology.com" target="_blank" class="developer-link">Zwicky Technology</a>
+                        Developed by: <a href="https://anayainfotech.com.np/" target="_blank" class="developer-link">Anaya Infotech</a>
                     </p>
                 </div>
             </div>

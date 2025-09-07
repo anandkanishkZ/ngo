@@ -163,7 +163,7 @@
                                     >
                                         <option value="">Select inquiry type</option>
                                         <option value="general" {{ old('inquiry_type') == 'general' ? 'selected' : '' }}>General Information</option>
-                                        <option value="volunteer" {{ old('inquiry_type') == 'volunteer' ? 'selected' : '' }}>Volunteering</option>
+                                        {{-- Volunteering option removed --}}
                                         <option value="partnership" {{ old('inquiry_type') == 'partnership' ? 'selected' : '' }}>Partnerships</option>
                                         <option value="media" {{ old('inquiry_type') == 'media' ? 'selected' : '' }}>Media & Press</option>
                                         <option value="support" {{ old('inquiry_type') == 'support' ? 'selected' : '' }}>Technical Support</option>
@@ -254,7 +254,7 @@
                             </h3>
                             <div id="faq1" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
                                 <div class="accordion-body">
-                                    We welcome volunteers of all backgrounds! Visit our <a href="{{ route('volunteer') }}">volunteer page</a> to learn about current opportunities, or contact us directly to discuss how your skills can contribute to our mission.
+                                    We welcome supporters of all backgrounds! Contact us directly to discuss how your skills can contribute to our mission.
                                 </div>
                             </div>
                         </div>

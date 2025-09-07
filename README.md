@@ -8,7 +8,7 @@ A comprehensive non-profit organization website built with Laravel, featuring mo
 - **Modern Homepage** with hero slides, statistics counter, and impact areas
 - **Projects Showcase** with ongoing and completed project categories
 - **Team Management** with member profiles and roles
-- **Events & Notices** system for announcements
+- **Notices** system for announcements
 - **Contact Forms** with email notifications
 - **Newsletter Subscription** with admin management
 - **Responsive Design** optimized for all devices

@@ -3,7 +3,6 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AboutController;
-use App\Http\Controllers\EventController;
 use App\Http\Controllers\NoticeController;
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\AuthController;
@@ -44,8 +43,7 @@ Route::get('/projects/ongoing', [ProjectController::class, 'ongoing'])->name('pr
 Route::get('/projects/completed', [ProjectController::class, 'completed'])->name('projects.completed');
 Route::get('/projects/{project}', [ProjectController::class, 'show'])->name('projects.show');
 
-Route::get('/events', [EventController::class, 'index'])->name('events');
-Route::get('/events/{event}', [EventController::class, 'show'])->name('events.show');
+// Events removed from the site
 
 Route::get('/notices', [NoticeController::class, 'index'])->name('notices.index');
 Route::get('/notices/{notice}', [NoticeController::class, 'show'])->name('notices.show');
@@ -56,9 +54,6 @@ Route::get('/reports/{report}', [ReportController::class, 'show'])->name('report
 Route::get('/reports/{report}/download', [ReportController::class, 'download'])->name('reports.download');
 Route::get('/reports/type/{type}', [ReportController::class, 'byType'])->name('reports.by-type');
 
-Route::get('/volunteer', function () {
-    return view('volunteer');
-})->name('volunteer');
 
 // Contact
 Route::get('/contact', [ContactController::class, 'index'])->name('contact');
