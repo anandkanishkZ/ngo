@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
-@section('title', 'Contact Us - Get in Touch | Hope Foundation')
-@section('description', 'Contact Hope Foundation for inquiries about our programs, volunteering opportunities, partnerships, or donations. We\'re here to help and answer your questions.')
+@section('title', 'Contact Us - Get in Touch | JIDS Nepal')
+@section('description', 'Contact JIDS Nepal for inquiries about our programs, partnerships, media, or support. We\'re here to help and answer your questions.')
 
 @section('content')
     <!-- Hero Section -->
@@ -61,6 +61,30 @@
             </div>
         </div>
     </section>
+
+        <!-- Location Map Section -->
+        <section class="section-padding">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-10">
+                        <div class="section-header text-center mb-4" data-aos="fade-up">
+                            <h2 class="section-title">Find Us on Google Maps</h2>
+                            <p class="section-subtitle">Jalpa Integrated Development Society (JIDS) Udayapur</p>
+                        </div>
+                        <div class="ratio ratio-16x9 shadow-sm rounded-3 overflow-hidden" data-aos="fade-up" data-aos-delay="50">
+                            <iframe 
+                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d147081.39534763477!2d86.53494047598234!3d26.831352832902404!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39eec3001c25174d%3A0x29fc30cf70530d6e!2sJalpa%20Integrated%20Development%20Society%20JIDS%20Udaypur!5e0!3m2!1sen!2snp!4v1757298630408!5m2!1sen!2snp" 
+                                style="border:0;" 
+                                allowfullscreen="" 
+                                loading="lazy" 
+                                referrerpolicy="no-referrer-when-downgrade"
+                                title="JIDS Nepal Location">
+                            </iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
     <!-- Contact Form Section -->
     <section class="section-padding">
@@ -162,11 +186,12 @@
                                         required
                                     >
                                         <option value="">Select inquiry type</option>
-                                        <option value="general" {{ old('inquiry_type') == 'general' ? 'selected' : '' }}>General Information</option>
+                                        @php($qt = request('type'))
+                                        <option value="general" {{ old('inquiry_type', $qt) == 'general' ? 'selected' : '' }}>General Information</option>
                                         {{-- Volunteering option removed --}}
-                                        <option value="partnership" {{ old('inquiry_type') == 'partnership' ? 'selected' : '' }}>Partnerships</option>
-                                        <option value="media" {{ old('inquiry_type') == 'media' ? 'selected' : '' }}>Media & Press</option>
-                                        <option value="support" {{ old('inquiry_type') == 'support' ? 'selected' : '' }}>Technical Support</option>
+                                        <option value="partnership" {{ old('inquiry_type', $qt) == 'partnership' ? 'selected' : '' }}>Partnerships</option>
+                                        <option value="media" {{ old('inquiry_type', $qt) == 'media' ? 'selected' : '' }}>Media & Press</option>
+                                        <option value="support" {{ old('inquiry_type', $qt) == 'support' ? 'selected' : '' }}>Technical Support</option>
                                     </select>
                                     @error('inquiry_type')
                                         <div class="invalid-feedback">{{ $message }}</div>
@@ -183,7 +208,12 @@
                                         class="form-control @error('subject') is-invalid @enderror" 
                                         id="subject" 
                                         name="subject" 
-                                        value="{{ old('subject') }}" 
+                                        value="{{ old('subject', match(request('type')) {
+                                            'partnership' => 'Partnership enquiry',
+                                            'media' => 'Media enquiry',
+                                            'support' => 'Support request',
+                                            default => ''
+                                        }) }}" 
                                         required
                                         placeholder="What is this about?"
                                     >
@@ -233,112 +263,9 @@
         </div>
     </section>
 
-    <!-- FAQ Section -->
-    <section class="section-padding bg-light">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-lg-8">
-                    <div class="section-header text-center mb-5" data-aos="fade-up">
-                        <h2 class="section-title">Frequently Asked Questions</h2>
-                        <p class="section-subtitle">Find quick answers to common questions</p>
-                    </div>
+    <!-- FAQ section intentionally removed -->
 
-                    <div class="accordion" id="faqAccordion" data-aos="fade-up" data-aos-delay="100">
-                        <!-- FAQ Item 1 -->
-                        <div class="accordion-item">
-                            <h3 class="accordion-header">
-                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">
-                                    <i class="fas fa-question-circle me-2"></i>
-                                    How can I volunteer with Hope Foundation?
-                                </button>
-                            </h3>
-                            <div id="faq1" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
-                                <div class="accordion-body">
-                                    We welcome supporters of all backgrounds! Contact us directly to discuss how your skills can contribute to our mission.
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- FAQ Item 2 -->
-                        <div class="accordion-item">
-                            <h3 class="accordion-header">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">
-                                    <i class="fas fa-hand-holding-heart me-2"></i>
-                                    What's the best way to make a donation?
-                                </button>
-                            </h3>
-                            <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
-                                <div class="accordion-body">
-                                    You can support our mission through various ways including volunteering and spreading awareness. Contact us directly to learn more about how you can help create positive impact in communities.
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- FAQ Item 3 -->
-                        <div class="accordion-item">
-                            <h3 class="accordion-header">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3">
-                                    <i class="fas fa-handshake me-2"></i>
-                                    How do I propose a partnership with Hope Foundation?
-                                </button>
-                            </h3>
-                            <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
-                                <div class="accordion-body">
-                                    We're always interested in meaningful partnerships! Please use the contact form above with "Partnerships" selected as your inquiry type, or email us directly at partnerships@hopefoundation.org with details about your proposal.
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- FAQ Item 4 -->
-                        <div class="accordion-item">
-                            <h3 class="accordion-header">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq4">
-                                    <i class="fas fa-clock me-2"></i>
-                                    What are your office hours?
-                                </button>
-                            </h3>
-                            <div id="faq4" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
-                                <div class="accordion-body">
-                                    Our office is open Monday through Friday, 9:00 AM to 6:00 PM Nepal Time. While our phones are available during these hours, you can reach us anytime via email or this contact form.
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Map Section -->
-    <section class="map-section">
-        <div class="container-fluid p-0">
-            <div class="row g-0">
-                <div class="col-12">
-                    <div class="map-wrapper" data-aos="fade-up">
-                        <iframe 
-                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d56815.72644968743!2d83.35689!3d27.5031!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3996813588b4f979%3A0x5c8e9eb83d5a2c7c!2sBhairahawa%2C%20Nepal!5e0!3m2!1sen!2sus!4v1635000000000!5m2!1sen!2sus" 
-                            width="100%" 
-                            height="400" 
-                            style="border:0;" 
-                            allowfullscreen="" 
-                            loading="lazy" 
-                            referrerpolicy="no-referrer-when-downgrade"
-                            title="Hope Foundation Location - Bhairahawa, Nepal">
-                        </iframe>
-                        <div class="map-overlay">
-                            <div class="map-info">
-                                <h4><i class="fas fa-map-marker-alt me-2"></i>Find Us Here</h4>
-                                <p>Hope Foundation<br>Bhairahawa-11, Rupandehi<br>Lumbini Province, Nepal</p>
-                                <a href="https://maps.google.com/?q=Bhairahawa+Rupandehi+Nepal" target="_blank" class="btn btn-outline-primary btn-sm">
-                                    <i class="fas fa-directions me-1"></i>Get Directions
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+    <!-- Removed legacy bottom map section -->
 @endsection
 
 @push('styles')
@@ -374,121 +301,10 @@
     }
 
     .contact-info-card h3 {
-        color: var(--primary-color);
-        font-weight: 600;
-        margin-bottom: 1rem;
-        font-size: 1.3rem;
-    }
-
-    .contact-info-card p {
-        color: #6c757d;
-        line-height: 1.6;
-        margin-bottom: 1rem;
-    }
-
-    .phone-link, .email-link {
-        color: var(--secondary-color);
-        text-decoration: none;
-        font-weight: 500;
-    }
-
-    .phone-link:hover, .email-link:hover {
-        color: var(--primary-color);
-        text-decoration: underline;
-    }
-
-    .contact-link {
-        color: var(--accent-color);
-        text-decoration: none;
-        font-weight: 500;
-        display: inline-flex;
-        align-items: center;
-        gap: 0.5rem;
-    }
-
-    .contact-link:hover {
-        color: var(--secondary-color);
-    }
-
-    /* Contact Form Styling */
-    .contact-form-wrapper {
-        background: white;
-        padding: 2.5rem;
-        border-radius: 20px;
-        box-shadow: 0 15px 35px rgba(0,0,0,0.1);
-        border: 1px solid rgba(0,0,0,0.05);
-    }
-
-    .contact-form .form-label {
-        font-weight: 600;
-        color: var(--primary-color);
-        margin-bottom: 0.5rem;
-        display: flex;
-        align-items: center;
-    }
-
-    .contact-form .form-control,
-    .contact-form .form-select {
-        border: 2px solid #e9ecef;
-        border-radius: 10px;
-        padding: 0.75rem 1rem;
-        transition: all 0.3s ease;
-        font-size: 1rem;
-    }
-
-    .contact-form .form-control:focus,
-    .contact-form .form-select:focus {
-        border-color: var(--accent-color);
-        box-shadow: 0 0 0 0.2rem rgba(243, 156, 18, 0.25);
-    }
-
-    .contact-form textarea.form-control {
-        resize: vertical;
-        min-height: 120px;
-    }
-
-    /* FAQ Styling */
-    .accordion-item {
         border: 1px solid rgba(0,0,0,0.1);
         border-radius: 10px !important;
         margin-bottom: 1rem;
         overflow: hidden;
-    }
-
-    .accordion-button {
-        background: white;
-        border: none;
-        padding: 1.25rem 1.5rem;
-        font-weight: 600;
-        color: var(--primary-color);
-    }
-
-    .accordion-button:not(.collapsed) {
-        background: linear-gradient(135deg, rgba(44, 62, 80, 0.1), rgba(231, 76, 60, 0.1));
-        color: var(--secondary-color);
-        box-shadow: none;
-    }
-
-    .accordion-button:focus {
-        box-shadow: 0 0 0 0.25rem rgba(243, 156, 18, 0.25);
-    }
-
-    .accordion-body {
-        padding: 1.5rem;
-        background: #f8f9fa;
-        color: #6c757d;
-        line-height: 1.6;
-    }
-
-    .accordion-body a {
-        color: var(--secondary-color);
-        text-decoration: none;
-        font-weight: 500;
-    }
-
-    .accordion-body a:hover {
-        color: var(--primary-color);
-        text-decoration: underline;
     }
 
     /* Map Section */

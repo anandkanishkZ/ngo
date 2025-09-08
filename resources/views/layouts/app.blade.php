@@ -867,7 +867,8 @@
         }
 
         .footer-main {
-            padding: 80px 0 40px;
+            /* Reduced overall height */
+            padding: 48px 0 20px;
             position: relative;
             z-index: 2;
             background: transparent;
@@ -912,17 +913,17 @@
 
         .footer-description {
             color: #64748b;
-            font-size: 16px;
-            line-height: 1.6;
-            margin-bottom: 30px;
-            max-width: 320px;
+            font-size: 15px;
+            line-height: 1.55;
+            margin-bottom: 18px; /* tighter spacing */
+            max-width: 100%; /* allow full column width to reduce line wraps */
         }
 
         .footer-section-title {
             color: #1e293b;
             font-size: 18px;
             font-weight: 700;
-            margin-bottom: 25px;
+            margin-bottom: 16px; /* tighter spacing */
             position: relative;
             padding-bottom: 10px;
         }
@@ -945,7 +946,7 @@
         }
 
         .footer-links li {
-            margin-bottom: 12px;
+            margin-bottom: 8px;
         }
 
         .footer-links a {
@@ -984,7 +985,7 @@
         .contact-info li {
             display: flex;
             align-items: flex-start;
-            margin-bottom: 18px;
+            margin-bottom: 14px; /* tighter spacing */
             color: #64748b;
             font-size: 15px;
             line-height: 1.5;
@@ -1007,21 +1008,21 @@
 
         .social-links {
             display: flex;
-            gap: 15px;
-            margin-top: 30px;
+            gap: 10px;
+            margin-top: 20px;
         }
 
         .social-link {
-            width: 50px;
-            height: 50px;
+            width: 40px;
+            height: 40px;
             background: white;
-            border: 2px solid #e2e8f0;
+            border: 1px solid #e2e8f0;
             border-radius: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
             color: #64748b;
-            font-size: 18px;
+            font-size: 16px;
             text-decoration: none;
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
@@ -1036,7 +1037,7 @@
         }
 
         .footer-bottom {
-            padding: 30px 0;
+            padding: 18px 0; /* reduced height */
             background: white;
             border-top: 1px solid #e2e8f0;
             position: relative;
@@ -1141,7 +1142,7 @@
         /* Responsive Design */
         @media (max-width: 768px) {
             .footer-main {
-                padding: 60px 0 30px;
+                padding: 36px 0 16px; /* tighter on mobile */
             }
             
             .footer-bottom-content {
@@ -1334,7 +1335,7 @@
                                 JIDS Nepal
                             </a>
                             <p class="footer-description">
-                                JIDS Nepal is a community-based organization established in 1995 in Udayapur. We empower marginalized communities through education, health, WASH, environmental conservation, and livelihood programs to build a healthy, prosperous, and self‑reliant society.
+                                Since 1995, JIDS Nepal has partnered with communities in Udayapur to improve lives through education, health, WASH, environmental conservation, and livelihoods—building a healthy, prosperous, and self‑reliant society.
                             </p>
                             <div class="social-links">
                                 <a href="#" class="social-link" title="Facebook">
@@ -1353,24 +1354,26 @@
                         </div>
                     </div>
                     
-                    <!-- Quick Links -->
+            <!-- Quick Links -->
                     <div class="col-lg-2 col-md-6">
                         <h6 class="footer-section-title">Explore</h6>
                         <ul class="footer-links">
-                            <li><a href="{{ route('about') }}"><i class="fas fa-users"></i>About Us</a></li>
-                            <li><a href="{{ route('team') }}"><i class="fas fa-user-friends"></i>Our Team</a></li>
-                            
-                            <li><a href="{{ route('notices.index') }}"><i class="fas fa-bullhorn"></i>Notices</a></li>
+                <li><a href="{{ route('about') }}"><i class="fas fa-users"></i>About Us</a></li>
+                <li><a href="{{ route('team') }}"><i class="fas fa-user-friends"></i>Our Team</a></li>
+                <li><a href="{{ route('projects.index') }}"><i class="fas fa-diagram-project"></i>Projects</a></li>
+                <li><a href="{{ route('reports.index') }}"><i class="fas fa-file-alt"></i>Reports</a></li>
+                <li><a href="{{ route('notices.index') }}"><i class="fas fa-bullhorn"></i>Notices</a></li>
                         </ul>
                     </div>
                     
-                    <!-- Get Involved -->
+            <!-- Get Involved -->
                     <div class="col-lg-2 col-md-6">
                         <h6 class="footer-section-title">Take Action</h6>
                         <ul class="footer-links">
                             {{-- Volunteer removed --}}
-                            <li><a href="#"><i class="fas fa-newspaper"></i>Newsletter</a></li>
-                            <li><a href="#"><i class="fas fa-share-alt"></i>Share</a></li>
+                            <li><a href="{{ route('contact', ['type' => 'partnership']) }}"><i class="fas fa-handshake"></i>Partner With Us</a></li>
+                            <li><a href="{{ route('contact', ['type' => 'media']) }}"><i class="fas fa-bullhorn"></i>Media Enquiries</a></li>
+                            <li><a href="{{ route('contact', ['type' => 'support']) }}"><i class="fas fa-life-ring"></i>Support Request</a></li>
                             <li><a href="{{ route('contact') }}"><i class="fas fa-envelope"></i>Contact Us</a></li>
                         </ul>
                     </div>
