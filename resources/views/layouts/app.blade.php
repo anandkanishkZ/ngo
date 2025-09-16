@@ -42,6 +42,16 @@
             overflow-x: hidden;
         }
 
+        /* GPU acceleration for smooth animations */
+        .main-header,
+        .logo-section,
+        .logo-text,
+        .logo-tagline {
+            transform: translateZ(0);
+            backface-visibility: hidden;
+            perspective: 1000px;
+        }
+
         /* Top Header Bar */
         .top-header {
             background: var(--secondary-color);
@@ -172,47 +182,46 @@
             position: sticky;
             top: 0;
             z-index: 1000;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            backdrop-filter: blur(10px);
+            transition: 
+                padding 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                box-shadow 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                background-color 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            will-change: transform;
             border-bottom: 1px solid transparent;
         }
 
         .main-header.scrolled {
-            background: rgba(255, 255, 255, 0.95);
+            background: rgba(255, 255, 255, 0.98);
             box-shadow: 
                 0 4px 20px rgba(0,0,0,0.15),
                 0 1px 3px rgba(0,0,0,0.1);
             padding: 8px 0;
-            backdrop-filter: blur(20px);
+            backdrop-filter: blur(10px);
             border-bottom: 1px solid rgba(0,0,0,0.1);
+        }
+
+        .logo-section {
+            transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         }
 
         .main-header.scrolled .logo-section {
             transform: scale(0.9);
         }
 
+        .logo-text {
+            transition: font-size 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
         .main-header.scrolled .logo-text {
             font-size: 1.6rem;
         }
 
+        .logo-tagline {
+            transition: font-size 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
         .main-header.scrolled .logo-tagline {
             font-size: 0.75rem;
-        }
-
-        /* Professional scroll indicator */
-        .main-header::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 0%;
-            height: 2px;
-            background: linear-gradient(90deg, var(--secondary-color), var(--accent-color));
-            transition: width 0.3s ease;
-        }
-
-        .main-header.scrolled::after {
-            width: 100%;
         }
 
         /* Enhanced mobile toggle for sticky header */
