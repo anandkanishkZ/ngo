@@ -517,6 +517,123 @@
         line-height: 1.6;
         margin: 0;
     }
+    
+    /* Professional Share Buttons Styling - Horizontal Icons */
+    .social-share-buttons {
+        display: flex;
+        flex-direction: row;
+        gap: 12px;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+    
+    .share-btn {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-decoration: none;
+        color: white;
+        font-size: 20px;
+        transition: all 0.3s ease;
+        cursor: pointer;
+        border: none;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+    
+    .share-btn:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+        color: white;
+        text-decoration: none;
+    }
+    
+    /* Facebook Styling */
+    .share-btn-facebook {
+        background: linear-gradient(135deg, #1877F2 0%, #1557B7 100%);
+    }
+    
+    .share-btn-facebook:hover {
+        background: linear-gradient(135deg, #166FE5 0%, #0E4A9D 100%);
+    }
+    
+    /* Twitter Styling */
+    .share-btn-twitter {
+        background: linear-gradient(135deg, #1DA1F2 0%, #0C85D0 100%);
+    }
+    
+    .share-btn-twitter:hover {
+        background: linear-gradient(135deg, #0D95E8 0%, #0A75BE 100%);
+    }
+    
+    /* LinkedIn Styling */
+    .share-btn-linkedin {
+        background: linear-gradient(135deg, #0A66C2 0%, #004182 100%);
+    }
+    
+    .share-btn-linkedin:hover {
+        background: linear-gradient(135deg, #095DAD 0%, #003870 100%);
+    }
+    
+    /* Copy Link Styling */
+    .share-btn-copy {
+        background: linear-gradient(135deg, #6c757d 0%, #495057 100%);
+    }
+    
+    .share-btn-copy:hover {
+        background: linear-gradient(135deg, #5a6268 0%, #3d4349 100%);
+    }
+    
+    /* Success Message */
+    #linkCopiedMessage {
+        background: linear-gradient(135deg, #2ecc71 0%, #27ae60 100%);
+        color: white;
+        padding: 12px 20px;
+        border-radius: 8px;
+        margin-top: 12px;
+        font-weight: 500;
+        box-shadow: 0 2px 10px rgba(46, 204, 113, 0.3);
+        animation: slideInUp 0.3s ease-out;
+    }
+    
+    #linkCopiedMessage i {
+        margin-right: 8px;
+    }
+    
+    @keyframes slideInUp {
+        from {
+            opacity: 0;
+            transform: translateY(10px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+    
+    /* Responsive Design */
+    @media (max-width: 768px) {
+        .share-btn {
+            padding: 14px 16px;
+        }
+        
+        .share-btn-icon {
+            width: 40px;
+            height: 40px;
+            font-size: 18px;
+            margin-right: 12px;
+        }
+        
+        .share-btn-label {
+            font-size: 14px;
+        }
+        
+        .share-btn-text {
+            font-size: 11px;
+        }
+    }
 </style>
 @endpush
 
@@ -770,25 +887,48 @@
                 @endif
                 
                 <!-- Share Project -->
-                <div class="sidebar-card" data-aos="fade-left" data-aos-delay="300">
-                    <h3 class="sidebar-title">
-                        <i class="fas fa-share-alt"></i>
+                <div class="sidebar-card share-card" data-aos="fade-left" data-aos-delay="300">
+                    <h3 class="sidebar-title" style="margin-bottom: 1.5rem;">
+                        <i class="fas fa-share-nodes" style="color: #3498db;"></i>
                         Share This Project
                     </h3>
                     
-                    <div class="d-flex gap-2">
+                    <div class="social-share-buttons">
+                        <!-- Facebook -->
                         <a href="https://www.facebook.com/sharer/sharer.php?u={{ urlencode(request()->fullUrl()) }}" 
-                           target="_blank" class="btn btn-primary btn-sm flex-fill">
-                            <i class="fab fa-facebook-f me-1"></i>Facebook
+                           target="_blank" 
+                           class="share-btn share-btn-facebook"
+                           title="Share on Facebook">
+                            <i class="fab fa-facebook-f"></i>
                         </a>
+                        
+                        <!-- Twitter -->
                         <a href="https://twitter.com/intent/tweet?url={{ urlencode(request()->fullUrl()) }}&text={{ urlencode($project->title) }}" 
-                           target="_blank" class="btn btn-info btn-sm flex-fill">
-                            <i class="fab fa-twitter me-1"></i>Twitter
+                           target="_blank" 
+                           class="share-btn share-btn-twitter"
+                           title="Share on Twitter">
+                            <i class="fab fa-twitter"></i>
                         </a>
+                        
+                        <!-- LinkedIn -->
                         <a href="https://www.linkedin.com/sharing/share-offsite/?url={{ urlencode(request()->fullUrl()) }}" 
-                           target="_blank" class="btn btn-success btn-sm flex-fill">
-                            <i class="fab fa-linkedin-in me-1"></i>LinkedIn
+                           target="_blank" 
+                           class="share-btn share-btn-linkedin"
+                           title="Share on LinkedIn">
+                            <i class="fab fa-linkedin-in"></i>
                         </a>
+                        
+                        <!-- Copy Link -->
+                        <button type="button" 
+                                class="share-btn share-btn-copy"
+                                onclick="copyProjectLink()"
+                                title="Copy Link">
+                            <i class="fas fa-link"></i>
+                        </button>
+                    </div>
+                    
+                    <div id="linkCopiedMessage" style="display: none; margin-top: 1rem; padding: 0.75rem; background: #d4edda; color: #155724; border-radius: 8px; font-size: 0.875rem; text-align: center;">
+                        <i class="fas fa-check-circle me-1"></i> Link copied to clipboard!
                     </div>
                 </div>
             </div>
@@ -916,6 +1056,51 @@ function openLightbox(imageSrc) {
     document.body.appendChild(lightbox);
     
     lightbox.onclick = () => document.body.removeChild(lightbox);
+}
+
+// Copy project link to clipboard
+function copyProjectLink() {
+    const url = window.location.href;
+    
+    // Try modern clipboard API first
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(url).then(() => {
+            showCopyMessage();
+        }).catch(() => {
+            fallbackCopyLink(url);
+        });
+    } else {
+        fallbackCopyLink(url);
+    }
+}
+
+// Fallback method for older browsers
+function fallbackCopyLink(text) {
+    const textArea = document.createElement('textarea');
+    textArea.value = text;
+    textArea.style.position = 'fixed';
+    textArea.style.left = '-9999px';
+    document.body.appendChild(textArea);
+    textArea.select();
+    
+    try {
+        document.execCommand('copy');
+        showCopyMessage();
+    } catch (err) {
+        console.error('Failed to copy:', err);
+    }
+    
+    document.body.removeChild(textArea);
+}
+
+// Show success message
+function showCopyMessage() {
+    const message = document.getElementById('linkCopiedMessage');
+    message.style.display = 'block';
+    
+    setTimeout(() => {
+        message.style.display = 'none';
+    }, 3000);
 }
 </script>
 @endpush
