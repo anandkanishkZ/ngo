@@ -1,8 +1,11 @@
-@extends('layouts.app')
-
-@section('title', 'Sign In | JIDS Nepal Dashboard')
-
-@push('styles')
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign In | JIDS Nepal Dashboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -16,9 +19,9 @@
     --login-danger: #dc2626;
     --login-neutral: #64748b;
     
-    --bg-primary: #f8fafc;
-    --bg-secondary: #ffffff;
-    --bg-light: #f1f5f9;
+    --bg-primary: #ffffff;
+    --bg-secondary: #f8fafc;
+    --bg-light: #e0f2fe;
     --text-primary: #0f172a;
     --text-secondary: #475569;
     --text-muted: #64748b;
@@ -32,9 +35,14 @@
     --shadow-card: 0 1px 3px rgba(0, 0, 0, 0.05);
 }
 
+body {
+    margin: 0;
+    padding: 0;
+}
+
 .login-container {
     min-height: 100vh;
-    background: var(--bg-primary);
+    background: linear-gradient(135deg, #e0f2fe 0%, #f0f9ff 50%, #ffffff 100%);
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     display: flex;
     align-items: center;
@@ -51,9 +59,8 @@
     right: 0;
     bottom: 0;
     background: 
-        radial-gradient(circle at 25% 25%, rgba(37, 99, 235, 0.05) 0%, transparent 50%),
-        radial-gradient(circle at 75% 75%, rgba(5, 150, 105, 0.03) 0%, transparent 50%),
-        linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-light) 100%);
+        radial-gradient(circle at 25% 25%, rgba(37, 99, 235, 0.08) 0%, transparent 50%),
+        radial-gradient(circle at 75% 75%, rgba(5, 150, 105, 0.05) 0%, transparent 50%);
     z-index: 1;
 }
 
@@ -65,11 +72,11 @@
 
 /* Professional Login Card */
 .login-card {
-    background: var(--bg-secondary);
+    background: #ffffff;
     border-radius: 24px;
     padding: 3rem 2.5rem;
-    box-shadow: var(--shadow-xl);
-    border: 1px solid var(--border-color);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+    border: 1px solid #e2e8f0;
     position: relative;
     backdrop-filter: blur(10px);
     max-width: 480px;
@@ -79,7 +86,7 @@
 
 .login-card:hover {
     transform: translateY(-4px);
-    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 25px 70px rgba(0, 0, 0, 0.2);
 }
 
 /* Brand Section */
@@ -123,13 +130,13 @@
 .brand-title {
     font-size: 1.875rem;
     font-weight: 700;
-    color: var(--text-primary);
+    color: #0f172a;
     margin-bottom: 0.5rem;
     letter-spacing: -0.025em;
 }
 
 .brand-subtitle {
-    color: var(--text-muted);
+    color: #1e293b;
     font-size: 1rem;
     font-weight: 500;
 }
@@ -148,7 +155,7 @@
     display: block;
     font-weight: 600;
     font-size: 0.875rem;
-    color: var(--text-secondary);
+    color: #0f172a;
     margin-bottom: 0.5rem;
     letter-spacing: 0.025em;
 }
@@ -156,12 +163,12 @@
 .form-control {
     width: 100%;
     padding: 0.875rem 1rem;
-    border: 2px solid var(--border-color);
+    border: 2px solid #e2e8f0;
     border-radius: 12px;
     font-size: 1rem;
     font-weight: 500;
-    color: var(--text-primary);
-    background: var(--bg-secondary);
+    color: #0f172a;
+    background: #ffffff;
     transition: all 0.3s ease;
     position: relative;
 }
@@ -174,7 +181,7 @@
 }
 
 .form-control::placeholder {
-    color: var(--text-muted);
+    color: #64748b;
     font-weight: 400;
 }
 
@@ -188,7 +195,7 @@
     right: 1rem;
     top: 50%;
     transform: translateY(-50%);
-    color: var(--text-muted);
+    color: #475569;
     cursor: pointer;
     font-size: 1.1rem;
     transition: all 0.3s ease;
@@ -216,9 +223,9 @@
 .form-check-input {
     width: 1.25rem;
     height: 1.25rem;
-    border: 2px solid var(--border-color);
+    border: 2px solid #cbd5e1;
     border-radius: 6px;
-    background: var(--bg-secondary);
+    background: #ffffff;
     transition: all 0.3s ease;
 }
 
@@ -230,7 +237,7 @@
 .form-check-label {
     font-size: 0.875rem;
     font-weight: 500;
-    color: var(--text-secondary);
+    color: #0f172a;
     cursor: pointer;
 }
 
@@ -385,9 +392,8 @@
     }
 }
 </style>
-@endpush
-
-@section('content')
+</head>
+<body>
 <div class="login-container">
     <div class="login-content">
         <div class="container">
@@ -519,4 +525,5 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 </script>
-@endsection
+</body>
+</html>

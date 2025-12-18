@@ -13,14 +13,6 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-    // Events removed
-            'time' => '14:00:00',
-            'location' => 'Public Library, Main Branch',
-            'image' => 'digital-literacy.jpg',
-            'max_participants' => 30,
-            'registration_required' => true,
-        ]);
-
         // Admin user
         if (!User::where('email', 'admin@example.com')->exists()) {
             User::create([
