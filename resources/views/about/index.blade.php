@@ -305,6 +305,102 @@
         </div>
     </section>
 
+    <!-- Norms & Values Section -->
+    <section class="norms-values-section section-padding" style="background: linear-gradient(135deg, #ffffff 0%, #f0f9ff 100%); position: relative; overflow: hidden;">
+        <div class="container">
+            <!-- Section Header -->
+            <div class="text-center mb-5" data-aos="fade-up">
+                <div class="section-badge" style="display: inline-block; padding: 8px 24px; background: linear-gradient(135deg, rgba(37, 99, 235, 0.1), rgba(5, 150, 105, 0.1)); border-radius: 50px; margin-bottom: 20px;">
+                    <span style="color: #2563eb; font-weight: 600; font-size: 14px; text-transform: uppercase; letter-spacing: 1px;">Our Foundation</span>
+                </div>
+                <h2 class="modern-section-title" style="font-size: 3rem; font-weight: 800; background: linear-gradient(135deg, #1e3a8a, #2563eb); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 16px;">Norms & Values</h2>
+                <p class="section-subtitle" style="font-size: 1.2rem; color: #666; max-width: 700px; margin: 0 auto; line-height: 1.6;">Our guiding principles that shape every decision we make and every action we take in serving communities.</p>
+            </div>
+
+            <!-- Values Grid -->
+            <div class="row g-4">
+                @php
+                $values = [
+                    ['icon' => 'fa-users', 'title' => 'Locality-based / Community-centered Approach', 'color' => '#2563eb'],
+                    ['icon' => 'fa-scale-balanced', 'title' => 'Respect for Human Rights', 'color' => '#dc2626'],
+                    ['icon' => 'fa-landmark', 'title' => 'Democratic Practices', 'color' => '#059669'],
+                    ['icon' => 'fa-child', 'title' => 'Emphasis on the Participation of Children and Youth', 'color' => '#f59e0b'],
+                    ['icon' => 'fa-shield-alt', 'title' => 'Good Governance', 'color' => '#7c3aed'],
+                    ['icon' => 'fa-handshake', 'title' => 'Non-partisan and Non-sectarian', 'color' => '#0891b2'],
+                    ['icon' => 'fa-chart-line', 'title' => 'Accountability and Transparency', 'color' => '#db2777'],
+                    ['icon' => 'fa-hand-holding-heart', 'title' => 'Child Protection and Safeguarding', 'color' => '#ea580c'],
+                    ['icon' => 'fa-heart', 'title' => 'Ethics and Integrity', 'color' => '#be123c'],
+                    ['icon' => 'fa-hands-helping', 'title' => 'Partnership and Collaboration', 'color' => '#0d9488'],
+                    ['icon' => 'fa-lightbulb', 'title' => 'Evidence-based and Learning-oriented Practices', 'color' => '#ca8a04'],
+                    ['icon' => 'fa-venus-mars', 'title' => 'Gender Equality and Social Justice', 'color' => '#9333ea'],
+                    ['icon' => 'fa-wheelchair', 'title' => 'Disability-inclusive / Disability-friendly Practices', 'color' => '#0369a1'],
+                    ['icon' => 'fa-leaf', 'title' => 'Environmental Protection and Climate Justice', 'color' => '#15803d'],
+                    ['icon' => 'fa-recycle', 'title' => 'Sustainability', 'color' => '#16a34a']
+                ];
+                @endphp
+
+                @foreach($values as $index => $value)
+                    <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="{{ 100 + ($index * 50) }}">
+                        <div class="value-card" style="
+                            background: white;
+                            border-radius: 16px;
+                            padding: 28px 24px;
+                            display: flex;
+                            align-items: flex-start;
+                            gap: 20px;
+                            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+                            border: 1px solid rgba(0,0,0,0.05);
+                            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+                            height: 100%;
+                            position: relative;
+                            overflow: hidden;
+                        "
+                        onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 12px 35px rgba(0,0,0,0.12)'"
+                        onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 20px rgba(0,0,0,0.08)'">
+                            <!-- Left Border Accent -->
+                            <div style="position: absolute; left: 0; top: 0; bottom: 0; width: 4px; background: {{ $value['color'] }}; border-radius: 4px 0 0 4px;"></div>
+                            
+                            <!-- Icon Container -->
+                            <div class="value-icon" style="
+                                flex-shrink: 0;
+                                width: 50px;
+                                height: 50px;
+                                background: {{ $value['color'] }}15;
+                                border-radius: 12px;
+                                display: flex;
+                                align-items: center;
+                                justify-content: center;
+                                transition: all 0.3s ease;
+                            ">
+                                <i class="fas {{ $value['icon'] }}" style="font-size: 1.5rem; color: {{ $value['color'] }};"></i>
+                            </div>
+                            
+                            <!-- Text Content -->
+                            <div class="value-content" style="flex: 1;">
+                                <h5 style="
+                                    font-size: 1.05rem;
+                                    font-weight: 600;
+                                    color: #1e293b;
+                                    margin: 0;
+                                    line-height: 1.4;
+                                ">{{ $value['title'] }}</h5>
+                            </div>
+                        </div>
+                    </div>
+                @endforeach
+            </div>
+
+            <!-- Bottom Statement -->
+            <div class="text-center mt-5" data-aos="fade-up" data-aos-delay="800">
+                <div style="max-width: 800px; margin: 0 auto; padding: 32px; background: linear-gradient(135deg, #eff6ff, #dbeafe); border-radius: 20px; border: 2px solid #bfdbfe;">
+                    <p style="font-size: 1.15rem; color: #1e3a8a; font-weight: 500; margin: 0; line-height: 1.7;">
+                        These core values guide our work and ensure that every action we take contributes to building a more just, equitable, and sustainable world for all.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Our Trusted Partners Section -->
     <section class="partners-section section-padding bg-light">
         <div class="container">
@@ -332,11 +428,12 @@
                                         display: flex; 
                                         align-items: center; 
                                         justify-content: center;
-                                        cursor: {{ $partner->website_url ? 'pointer' : 'default' }};"
-                                 @if($partner->website_url)
-                                     onclick="window.open('{{ $partner->website_url }}', '_blank')"
-                                     onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 8px 25px rgba(0,0,0,0.15)'"
-                                     onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 5px 20px rgba(0,0,0,0.08)'"
+                                        position: relative;"
+                                 onmouseover="this.style.transform='translateY(-10px)'; this.style.boxShadow='0 15px 35px rgba(0,0,0,0.12)'" 
+                                 onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 5px 20px rgba(0,0,0,0.08)'"
+                                 @if($partner->url)
+                                     onclick="window.open('{{ $partner->url }}', '_blank')"
+                                     style="cursor: pointer;"
                                  @endif>
                                 @if($partner->logo_url)
                                     <img src="{{ $partner->logo_url }}" 

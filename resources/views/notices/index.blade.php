@@ -27,15 +27,6 @@
 <!-- Modern Notices Grid Section -->
 <section class="modern-notices-section py-5">
   <div class="container">
-    <!-- Debug Info (remove in production) -->
-    @if(config('app.debug'))
-      <div class="alert alert-info mb-4">
-        <strong>Debug Info:</strong> 
-        Found {{ $notices->total() ?? 0 }} total notices, 
-        {{ $notices->count() }} on current page
-      </div>
-    @endif
-    
     @if($notices->isNotEmpty())
       @php
         $featuredNotice = $notices->first(fn($notice) => $notice->is_featured);

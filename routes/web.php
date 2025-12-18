@@ -37,6 +37,9 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/about', [AboutController::class, 'index'])->name('about');
 Route::get('/our-team', [AboutController::class, 'team'])->name('team');
 
+// Thematic Areas (Impact Areas public page)
+Route::get('/thematic-areas', [ImpactAreaController::class, 'publicIndex'])->name('impact-areas.index');
+
 // Projects
 Route::get('/projects', [ProjectController::class, 'index'])->name('projects.index');
 Route::get('/projects/ongoing', [ProjectController::class, 'ongoing'])->name('projects.ongoing');

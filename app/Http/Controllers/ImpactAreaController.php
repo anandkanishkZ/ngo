@@ -9,6 +9,15 @@ use Illuminate\Support\Facades\Cache;
 class ImpactAreaController extends Controller
 {
     /**
+     * Display the public thematic areas page.
+     */
+    public function publicIndex()
+    {
+        $impactAreas = ImpactArea::getActiveAreas();
+        return view('impact-areas.index', compact('impactAreas'));
+    }
+
+    /**
      * Display a listing of the resource.
      */
     public function index()

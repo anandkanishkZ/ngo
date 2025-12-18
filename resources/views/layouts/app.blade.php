@@ -1314,6 +1314,16 @@
                                     </div>
                                 </li>
                                 <li class="dropdown">
+                                    <a href="#" class="{{ request()->routeIs('impact-areas*') || request()->routeIs('projects*') ? 'active' : '' }}">
+                                        What We Do? <i class="fas fa-chevron-down ms-1" style="font-size: 0.8rem;"></i>
+                                    </a>
+                                    <div class="dropdown-menu">
+                                        <a href="{{ route('impact-areas.index') }}">Thematic Areas</a>
+                                        <a href="{{ route('projects.ongoing') }}">Ongoing Projects</a>
+                                        <a href="{{ route('projects.completed') }}">Completed Projects</a>
+                                    </div>
+                                </li>
+                                <li class="dropdown">
                                     <a href="#" class="{{ request()->routeIs('notices*') ? 'active' : '' }}">
                                         Page <i class="fas fa-chevron-down ms-1" style="font-size: 0.8rem;"></i>
                                     </a>
@@ -1322,15 +1332,6 @@
                                     </div>
                                 </li>
                                 <li><a href="{{ route('reports.index') }}" class="{{ request()->routeIs('reports*') ? 'active' : '' }}">Reports</a></li>
-                                <li class="dropdown">
-                                    <a href="#" class="{{ request()->routeIs('projects*') ? 'active' : '' }}">
-                                        Projects <i class="fas fa-chevron-down ms-1" style="font-size: 0.8rem;"></i>
-                                    </a>
-                                    <div class="dropdown-menu">
-                                        <a href="{{ route('projects.ongoing') }}">Ongoing Projects</a>
-                                        <a href="{{ route('projects.completed') }}">Completed Projects</a>
-                                    </div>
-                                </li>
                                 <li><a href="{{ route('contact') }}" class="{{ request()->routeIs('contact*') ? 'active' : '' }}">Contact</a></li>
                             </ul>
                         </nav>
