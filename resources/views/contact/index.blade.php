@@ -102,27 +102,43 @@
                         <!-- Success/Error Messages -->
                         @if(session('success'))
                             <div class="alert alert-success modern-alert" role="alert" data-aos="fade-left">
-                                <i class="fas fa-check-circle"></i>
-                                <span>{{ session('success') }}</span>
-                                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                                <div class="alert-icon">
+                                    <i class="fas fa-check-circle"></i>
+                                </div>
+                                <div class="alert-content">
+                                    <strong>Success!</strong>
+                                    <span>{{ session('success') }}</span>
+                                </div>
+                                <button type="button" class="alert-close" data-bs-dismiss="alert" aria-label="Close">
+                                    <i class="fas fa-times"></i>
+                                </button>
                             </div>
                         @endif
 
                         @if(session('error'))
                             <div class="alert alert-danger modern-alert" role="alert" data-aos="fade-left">
-                                <i class="fas fa-exclamation-circle"></i>
-                                <span>{{ session('error') }}</span>
-                                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                                <div class="alert-icon">
+                                    <i class="fas fa-exclamation-circle"></i>
+                                </div>
+                                <div class="alert-content">
+                                    <strong>Error!</strong>
+                                    <span>{{ session('error') }}</span>
+                                </div>
+                                <button type="button" class="alert-close" data-bs-dismiss="alert" aria-label="Close">
+                                    <i class="fas fa-times"></i>
+                                </button>
                             </div>
                         @endif
 
-                        <form action="{{ route('contact.store') }}" method="POST" class="modern-contact-form" data-aos="fade-left" data-aos-delay="100">
+                        <form action="{{ route('contact.store') }}" method="POST" class="modern-contact-form" data-aos="fade-left" data-aos-delay="100" id="contactForm">
                             @csrf
                             
                             <div class="form-row">
                                 <div class="form-group">
-                                    <label for="name" class="form-label">Full Name *</label>
-                                    <div class="input-group">
+                                    <label for="name" class="form-label">
+                                        Full Name <span class="required">*</span>
+                                    </label>
+                                    <div class="input-wrapper">
                                         <span class="input-icon">
                                             <i class="fas fa-user"></i>
                                         </span>
@@ -133,17 +149,22 @@
                                             name="name" 
                                             value="{{ old('name') }}" 
                                             required
-                                            placeholder="John Doe"
+                                            placeholder="Enter your full name"
                                         >
+                                        <span class="input-border"></span>
                                     </div>
                                     @error('name')
-                                        <div class="invalid-feedback">{{ $message }}</div>
+                                        <div class="invalid-feedback">
+                                            <i class="fas fa-exclamation-circle"></i> {{ $message }}
+                                        </div>
                                     @enderror
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="email" class="form-label">Email Address *</label>
-                                    <div class="input-group">
+                                    <label for="email" class="form-label">
+                                        Email Address <span class="required">*</span>
+                                    </label>
+                                    <div class="input-wrapper">
                                         <span class="input-icon">
                                             <i class="fas fa-envelope"></i>
                                         </span>
@@ -154,19 +175,24 @@
                                             name="email" 
                                             value="{{ old('email') }}" 
                                             required
-                                            placeholder="john@example.com"
+                                            placeholder="your@email.com"
                                         >
+                                        <span class="input-border"></span>
                                     </div>
                                     @error('email')
-                                        <div class="invalid-feedback">{{ $message }}</div>
+                                        <div class="invalid-feedback">
+                                            <i class="fas fa-exclamation-circle"></i> {{ $message }}
+                                        </div>
                                     @enderror
                                 </div>
                             </div>
 
                             <div class="form-row">
                                 <div class="form-group">
-                                    <label for="phone" class="form-label">Phone Number</label>
-                                    <div class="input-group">
+                                    <label for="phone" class="form-label">
+                                        Phone Number <span class="optional">(Optional)</span>
+                                    </label>
+                                    <div class="input-wrapper">
                                         <span class="input-icon">
                                             <i class="fas fa-phone"></i>
                                         </span>
@@ -178,15 +204,20 @@
                                             value="{{ old('phone') }}"
                                             placeholder="+977 98XXXXXXXX"
                                         >
+                                        <span class="input-border"></span>
                                     </div>
                                     @error('phone')
-                                        <div class="invalid-feedback">{{ $message }}</div>
+                                        <div class="invalid-feedback">
+                                            <i class="fas fa-exclamation-circle"></i> {{ $message }}
+                                        </div>
                                     @enderror
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="inquiry_type" class="form-label">Inquiry Type *</label>
-                                    <div class="input-group">
+                                    <label for="inquiry_type" class="form-label">
+                                        Inquiry Type <span class="required">*</span>
+                                    </label>
+                                    <div class="input-wrapper">
                                         <span class="input-icon">
                                             <i class="fas fa-tag"></i>
                                         </span>
@@ -196,23 +227,31 @@
                                             name="inquiry_type" 
                                             required
                                         >
-                                            <option value="">Choose a type</option>
+                                            <option value="">Select inquiry type</option>
                                             @php($qt = request('type'))
                                             <option value="general" {{ old('inquiry_type', $qt) == 'general' ? 'selected' : '' }}>General Information</option>
                                             <option value="partnership" {{ old('inquiry_type', $qt) == 'partnership' ? 'selected' : '' }}>Partnerships</option>
                                             <option value="media" {{ old('inquiry_type', $qt) == 'media' ? 'selected' : '' }}>Media & Press</option>
                                             <option value="support" {{ old('inquiry_type', $qt) == 'support' ? 'selected' : '' }}>Technical Support</option>
                                         </select>
+                                        <span class="select-arrow">
+                                            <i class="fas fa-chevron-down"></i>
+                                        </span>
+                                        <span class="input-border"></span>
                                     </div>
                                     @error('inquiry_type')
-                                        <div class="invalid-feedback">{{ $message }}</div>
+                                        <div class="invalid-feedback">
+                                            <i class="fas fa-exclamation-circle"></i> {{ $message }}
+                                        </div>
                                     @enderror
                                 </div>
                             </div>
 
                             <div class="form-group">
-                                <label for="subject" class="form-label">Subject *</label>
-                                <div class="input-group">
+                                <label for="subject" class="form-label">
+                                    Subject <span class="required">*</span>
+                                </label>
+                                <div class="input-wrapper">
                                     <span class="input-icon">
                                         <i class="fas fa-heading"></i>
                                     </span>
@@ -228,47 +267,58 @@
                                             default => ''
                                         }) }}" 
                                         required
-                                        placeholder="What is this about?"
+                                        placeholder="Brief summary of your message"
                                     >
+                                    <span class="input-border"></span>
                                 </div>
                                 @error('subject')
-                                    <div class="invalid-feedback">{{ $message }}</div>
+                                    <div class="invalid-feedback">
+                                        <i class="fas fa-exclamation-circle"></i> {{ $message }}
+                                    </div>
                                 @enderror
                             </div>
 
                             <div class="form-group">
-                                <label for="message" class="form-label">Message *</label>
-                                <div class="input-group">
+                                <label for="message" class="form-label">
+                                    Your Message <span class="required">*</span>
+                                </label>
+                                <div class="input-wrapper">
                                     <span class="input-icon textarea-icon">
-                                        <i class="fas fa-comment"></i>
+                                        <i class="fas fa-comment-dots"></i>
                                     </span>
                                     <textarea 
                                         class="form-control @error('message') is-invalid @enderror" 
                                         id="message" 
                                         name="message" 
-                                        rows="5" 
+                                        rows="6" 
                                         required
-                                        placeholder="Tell us more about your inquiry..."
+                                        placeholder="Tell us more about your inquiry... (minimum 10 characters)"
                                     >{{ old('message') }}</textarea>
+                                    <span class="input-border"></span>
+                                    <div class="char-counter">
+                                        <span id="charCount">0</span> / 1000 characters
+                                    </div>
                                 </div>
                                 @error('message')
-                                    <div class="invalid-feedback">{{ $message }}</div>
+                                    <div class="invalid-feedback">
+                                        <i class="fas fa-exclamation-circle"></i> {{ $message }}
+                                    </div>
                                 @enderror
-                                <div class="form-help">
-                                    <small class="text-muted">Minimum 10 characters required</small>
-                                </div>
                             </div>
 
                             <div class="form-submit">
-                                <button type="submit" class="btn-modern-primary">
+                                <button type="submit" class="btn-modern-submit" id="submitBtn">
                                     <span class="btn-text">Send Message</span>
                                     <span class="btn-icon">
                                         <i class="fas fa-paper-plane"></i>
                                     </span>
+                                    <span class="btn-loader">
+                                        <i class="fas fa-circle-notch fa-spin"></i>
+                                    </span>
                                 </button>
                                 <p class="form-privacy">
                                     <i class="fas fa-shield-alt"></i>
-                                    Your information is secure and will only be used to respond to your inquiry.
+                                    Your information is secure and protected. We'll respond within 24 hours.
                                 </p>
                             </div>
                         </form>
@@ -573,30 +623,89 @@
         font-size: 1.1rem;
     }
 
-    /* Professional Alert */
+    /* Professional Alert - Enhanced */
     .modern-alert {
-        padding: 1rem 1.5rem;
-        border-radius: 12px;
+        padding: 1.25rem 1.5rem;
+        border-radius: 15px;
         border: none;
         margin-bottom: 2rem;
         display: flex;
         align-items: center;
-        gap: 0.75rem;
+        gap: 1rem;
+        animation: slideInDown 0.4s ease;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    }
+
+    @keyframes slideInDown {
+        from {
+            opacity: 0;
+            transform: translateY(-20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    .alert-icon {
+        flex-shrink: 0;
+        width: 40px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 10px;
+        font-size: 1.25rem;
     }
 
     .modern-alert.alert-success {
-        background: rgba(34, 197, 94, 0.1);
-        color: var(--contact-success);
-        border-left: 4px solid var(--contact-success);
+        background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%);
+        border: 1px solid #6ee7b7;
+    }
+
+    .modern-alert.alert-success .alert-icon {
+        background: #10b981;
+        color: white;
     }
 
     .modern-alert.alert-danger {
-        background: rgba(239, 68, 68, 0.1);
-        color: var(--contact-error);
-        border-left: 4px solid var(--contact-error);
+        background: linear-gradient(135deg, #fee2e2 0%, #fecaca 100%);
+        border: 1px solid #fca5a5;
     }
 
-    /* Professional Form */
+    .modern-alert.alert-danger .alert-icon {
+        background: #ef4444;
+        color: white;
+    }
+
+    .alert-content {
+        flex: 1;
+    }
+
+    .alert-content strong {
+        display: block;
+        margin-bottom: 0.25rem;
+        font-weight: 700;
+        font-size: 1rem;
+    }
+
+    .alert-close {
+        background: none;
+        border: none;
+        color: inherit;
+        opacity: 0.5;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        padding: 0.5rem;
+        border-radius: 8px;
+    }
+
+    .alert-close:hover {
+        opacity: 1;
+        background: rgba(0, 0, 0, 0.1);
+    }
+
+    /* Professional Form - Enhanced */
     .modern-contact-form {
         max-width: none;
     }
@@ -617,53 +726,100 @@
     }
 
     .form-label {
-        display: block;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
         font-weight: 600;
         color: var(--contact-dark);
-        margin-bottom: 0.5rem;
+        margin-bottom: 0.75rem;
         font-size: 0.95rem;
     }
 
-    .input-group {
+    .required {
+        color: #ef4444;
+        font-weight: 700;
+    }
+
+    .optional {
+        color: var(--contact-gray);
+        font-weight: 400;
+        font-size: 0.85rem;
+    }
+
+    .input-wrapper {
         position: relative;
-        display: flex;
-        align-items: center;
     }
 
     .input-icon {
         position: absolute;
-        left: 1rem;
+        left: 1.25rem;
+        top: 50%;
+        transform: translateY(-50%);
         color: var(--contact-gray);
         z-index: 5;
-        font-size: 1rem;
+        font-size: 1.1rem;
+        transition: all 0.3s ease;
     }
 
     .textarea-icon {
-        top: 1rem;
-        align-self: flex-start;
+        top: 1.25rem;
+        transform: translateY(0);
     }
 
     .form-control {
         width: 100%;
-        padding: 1rem 1rem 1rem 3rem;
+        padding: 1.125rem 1.25rem 1.125rem 3.5rem;
         border: 2px solid var(--contact-border);
-        border-radius: 12px;
+        border-radius: 14px;
         font-size: 1rem;
-        transition: all 0.3s ease;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         background: #fafbfc;
         color: var(--contact-dark);
+        font-family: inherit;
+        appearance: none;
+    }
+
+    .form-control:hover {
+        border-color: #cbd5e1;
     }
 
     .form-control:focus {
         outline: none;
         border-color: var(--contact-primary);
-        box-shadow: 0 0 0 3px rgba(var(--contact-primary), 0.1);
+        box-shadow: 0 0 0 4px rgba(var(--contact-primary), 0.08);
         background: var(--contact-white);
+    }
+
+    .form-control:focus + .input-border {
+        width: 100%;
+    }
+
+    .form-control:focus ~ .input-icon {
+        color: var(--contact-primary);
+        transform: translateY(-50%) scale(1.1);
+    }
+
+    .input-border {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 0;
+        height: 3px;
+        background: var(--contact-primary);
+        transition: width 0.4s ease;
+        border-radius: 0 0 14px 14px;
     }
 
     .form-control.is-invalid {
         border-color: var(--contact-error);
         background: #fef2f2;
+        animation: shake 0.4s ease;
+    }
+
+    @keyframes shake {
+        0%, 100% { transform: translateX(0); }
+        25% { transform: translateX(-5px); }
+        75% { transform: translateX(5px); }
     }
 
     .form-control.is-valid {
@@ -672,40 +828,122 @@
     }
 
     .invalid-feedback {
-        display: block;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
         color: var(--contact-error);
         font-size: 0.875rem;
         margin-top: 0.5rem;
+        font-weight: 500;
     }
 
-    .form-help {
-        margin-top: 0.5rem;
+    /* Select Dropdown Enhancement */
+    .select-arrow {
+        position: absolute;
+        right: 1.25rem;
+        top: 50%;
+        transform: translateY(-50%);
+        pointer-events: none;
+        color: var(--contact-gray);
+        transition: all 0.3s ease;
     }
 
-    /* Professional Button */
-    .btn-modern-primary {
-        background: var(--contact-primary);
+    .form-control:focus ~ .select-arrow {
+        color: var(--contact-primary);
+        transform: translateY(-50%) rotate(180deg);
+    }
+
+    /* Character Counter */
+    .char-counter {
+        position: absolute;
+        bottom: 1rem;
+        right: 1.25rem;
+        font-size: 0.8rem;
+        color: var(--contact-gray);
+        background: rgba(255, 255, 255, 0.9);
+        padding: 0.25rem 0.5rem;
+        border-radius: 6px;
+        backdrop-filter: blur(10px);
+    }
+
+    #charCount {
+        font-weight: 600;
+        color: var(--contact-primary);
+    }
+
+    /* Professional Button - Enhanced */
+    .btn-modern-submit {
+        background: linear-gradient(135deg, var(--contact-primary) 0%, #16a34a 100%);
         border: none;
-        padding: 1rem 2.5rem;
-        border-radius: 12px;
+        padding: 1.125rem 3rem;
+        border-radius: 14px;
         color: white;
         font-weight: 600;
         font-size: 1.1rem;
         cursor: pointer;
-        transition: all 0.3s ease;
-        display: flex;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        display: inline-flex;
         align-items: center;
         gap: 0.75rem;
         text-decoration: none;
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+        position: relative;
+        overflow: hidden;
     }
 
-    .btn-modern-primary:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
-        background: var(--contact-primary);
-        filter: brightness(1.1);
-        color: white;
+    .btn-modern-submit::before {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 0;
+        height: 0;
+        background: rgba(255, 255, 255, 0.2);
+        border-radius: 50%;
+        transform: translate(-50%, -50%);
+        transition: width 0.6s ease, height 0.6s ease;
+    }
+
+    .btn-modern-submit:hover::before {
+        width: 400px;
+        height: 400px;
+    }
+
+    .btn-modern-submit:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 12px 30px rgba(0, 0, 0, 0.18);
+    }
+
+    .btn-modern-submit:active {
+        transform: translateY(-1px);
+    }
+
+    .btn-text, .btn-icon {
+        position: relative;
+        z-index: 1;
+    }
+
+    .btn-loader {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    }
+
+    .btn-modern-submit.loading .btn-text,
+    .btn-modern-submit.loading .btn-icon {
+        opacity: 0;
+    }
+
+    .btn-modern-submit.loading .btn-loader {
+        opacity: 1;
+    }
+
+    .btn-modern-submit:disabled {
+        opacity: 0.6;
+        cursor: not-allowed;
+        transform: none !important;
     }
 
     .form-submit {
@@ -714,13 +952,18 @@
     }
 
     .form-privacy {
-        margin-top: 1rem;
+        margin-top: 1.25rem;
         color: var(--contact-gray);
         font-size: 0.875rem;
         display: flex;
         align-items: center;
         justify-content: center;
         gap: 0.5rem;
+        line-height: 1.5;
+    }
+
+    .form-privacy i {
+        color: var(--contact-primary);
     }
 
     /* Professional Map Section */
@@ -830,14 +1073,45 @@
 
 @push('scripts')
 <script>
-    // Modern form validation and enhancement
+    // Modern Enhanced Contact Form Script
     document.addEventListener('DOMContentLoaded', function() {
-        const form = document.querySelector('.modern-contact-form');
+        const form = document.getElementById('contactForm');
+        const submitBtn = document.getElementById('submitBtn');
+        const messageField = document.getElementById('message');
+        const charCountSpan = document.getElementById('charCount');
         const inputs = form.querySelectorAll('input, select, textarea');
 
-        // Enhanced real-time validation
+        // Character counter for message field
+        if (messageField && charCountSpan) {
+            messageField.addEventListener('input', function() {
+                const length = this.value.length;
+                charCountSpan.textContent = length;
+                
+                if (length > 950) {
+                    charCountSpan.style.color = '#ef4444';
+                } else if (length > 800) {
+                    charCountSpan.style.color = '#f59e0b';
+                } else {
+                    charCountSpan.style.color = 'var(--contact-primary)';
+                }
+            });
+        }
+
+        // Enhanced input validation
         inputs.forEach(input => {
+            // Focus animation
+            input.addEventListener('focus', function() {
+                const wrapper = this.closest('.input-wrapper');
+                if (wrapper) {
+                    wrapper.style.transform = 'translateY(-2px)';
+                }
+            });
+
             input.addEventListener('blur', function() {
+                const wrapper = this.closest('.input-wrapper');
+                if (wrapper) {
+                    wrapper.style.transform = 'translateY(0)';
+                }
                 validateField(this);
             });
 
@@ -845,135 +1119,32 @@
                 if (this.classList.contains('is-invalid')) {
                     validateField(this);
                 }
-                
-                // Add typing animation
-                this.style.transform = 'scale(1.02)';
-                setTimeout(() => {
-                    this.style.transform = 'scale(1)';
-                }, 150);
-            });
-
-            // Focus effects
-            input.addEventListener('focus', function() {
-                this.parentNode.style.transform = 'translateY(-2px)';
-                this.parentNode.style.transition = 'all 0.3s ease';
-            });
-
-            input.addEventListener('blur', function() {
-                this.parentNode.style.transform = 'translateY(0)';
             });
         });
 
         function validateField(field) {
             const value = field.value.trim();
             let isValid = true;
-            let message = '';
 
-            // Remove existing validation classes
             field.classList.remove('is-valid', 'is-invalid');
 
-            // Field-specific validation
-            switch(field.name) {
-                case 'name':
-                    if (!value) {
-                        isValid = false;
-                        message = 'Name is required';
-                    } else if (value.length < 2) {
-                        isValid = false;
-                        message = 'Name must be at least 2 characters';
-                    } else if (!/^[a-zA-Z\s]+$/.test(value)) {
-                        isValid = false;
-                        message = 'Name should only contain letters and spaces';
-                    }
-                    break;
-
-                case 'email':
-                    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-                    if (!value) {
-                        isValid = false;
-                        message = 'Email is required';
-                    } else if (!emailRegex.test(value)) {
-                        isValid = false;
-                        message = 'Please enter a valid email address';
-                    }
-                    break;
-
-                case 'phone':
-                    if (value && (value.length < 10 || !/^[\+]?[\d\s\-\(\)]+$/.test(value))) {
-                        isValid = false;
-                        message = 'Please enter a valid phone number';
-                    }
-                    break;
-
-                case 'subject':
-                    if (!value) {
-                        isValid = false;
-                        message = 'Subject is required';
-                    } else if (value.length < 3) {
-                        isValid = false;
-                        message = 'Subject must be at least 3 characters';
-                    }
-                    break;
-
-                case 'message':
-                    if (!value) {
-                        isValid = false;
-                        message = 'Message is required';
-                    } else if (value.length < 10) {
-                        isValid = false;
-                        message = 'Message must be at least 10 characters';
-                    }
-                    break;
-
-                case 'inquiry_type':
-                    if (!value) {
-                        isValid = false;
-                        message = 'Please select an inquiry type';
-                    }
-                    break;
+            if (field.hasAttribute('required') && !value) {
+                isValid = false;
+            } else if (field.type === 'email' && value) {
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                isValid = emailRegex.test(value);
+            } else if (field.name === 'message' && value && value.length < 10) {
+                isValid = false;
             }
 
-            // Apply validation classes and messages
-            if (isValid && value) {
-                field.classList.add('is-valid');
-                // Add success animation
-                animateFieldSuccess(field);
-            } else if (!isValid) {
-                field.classList.add('is-invalid');
-                
-                // Update error message
-                let feedback = field.parentNode.parentNode.querySelector('.invalid-feedback');
-                if (!feedback) {
-                    feedback = document.createElement('div');
-                    feedback.className = 'invalid-feedback';
-                    field.parentNode.parentNode.appendChild(feedback);
-                }
-                feedback.textContent = message;
-                
-                // Add error animation
-                animateFieldError(field);
+            if (value) {
+                field.classList.add(isValid ? 'is-valid' : 'is-invalid');
             }
 
             return isValid;
         }
 
-        function animateFieldSuccess(field) {
-            field.style.borderColor = '#22c55e';
-            field.style.boxShadow = '0 0 0 3px rgba(34, 197, 94, 0.1)';
-        }
-
-        function animateFieldError(field) {
-            field.style.borderColor = '#ef4444';
-            field.style.boxShadow = '0 0 0 3px rgba(239, 68, 68, 0.1)';
-            
-            // Shake animation
-            field.style.animation = 'shake 0.5s ease-in-out';
-            setTimeout(() => {
-                field.style.animation = '';
-            }, 500);
-        }
-
-        // Enhanced form submission
+        // Form submission with loading state
         form.addEventListener('submit', function(e) {
             let isFormValid = true;
             
@@ -986,162 +1157,50 @@
             if (!isFormValid) {
                 e.preventDefault();
                 
-                // Scroll to first invalid field with smooth animation
                 const firstInvalid = form.querySelector('.is-invalid');
                 if (firstInvalid) {
                     firstInvalid.scrollIntoView({ 
                         behavior: 'smooth', 
                         block: 'center' 
                     });
-                    
-                    // Focus with delay for better UX
-                    setTimeout(() => {
-                        firstInvalid.focus();
-                    }, 500);
+                    setTimeout(() => firstInvalid.focus(), 500);
                 }
-                
-                // Show general error message
-                showNotification('Please correct the errors below', 'error');
             } else {
                 // Show loading state
-                const submitBtn = form.querySelector('.btn-modern-primary');
-                const originalText = submitBtn.innerHTML;
-                submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+                submitBtn.classList.add('loading');
                 submitBtn.disabled = true;
-                
-                // Re-enable after a delay (form will redirect anyway)
-                setTimeout(() => {
-                    submitBtn.innerHTML = originalText;
-                    submitBtn.disabled = false;
-                }, 3000);
             }
         });
 
-        // Enhanced character counter for message field
-        const messageField = document.getElementById('message');
-        const messageHelp = messageField.closest('.form-group').querySelector('.form-help small');
-        
-        messageField.addEventListener('input', function() {
-            const length = this.value.length;
-            const remaining = Math.max(0, 10 - length);
-            
-            if (remaining > 0) {
-                messageHelp.textContent = `${remaining} more characters needed (minimum 10)`;
-                messageHelp.style.color = '#64748b';
-            } else {
-                messageHelp.textContent = `${length} characters`;
-                messageHelp.style.color = '#22c55e';
-                messageHelp.style.fontWeight = '500';
-            }
-        });
-
-        // Auto-dismiss alerts with animation
+        // Auto-dismiss alerts
         const alerts = document.querySelectorAll('.modern-alert');
         alerts.forEach(alert => {
-            setTimeout(() => {
-                alert.style.transform = 'translateY(-100%)';
-                alert.style.opacity = '0';
-                setTimeout(() => {
-                    if (alert.parentNode) {
-                        alert.parentNode.removeChild(alert);
-                    }
-                }, 300);
-            }, 5000);
-        });
-
-        // Notification system
-        function showNotification(message, type = 'info') {
-            const notification = document.createElement('div');
-            notification.className = `notification notification-${type}`;
-            notification.innerHTML = `
-                <i class="fas fa-${type === 'error' ? 'exclamation-circle' : 'info-circle'}"></i>
-                <span>${message}</span>
-            `;
+            const closeBtn = alert.querySelector('.alert-close');
+            if (closeBtn) {
+                closeBtn.addEventListener('click', function() {
+                    alert.style.opacity = '0';
+                    alert.style.transform = 'translateY(-20px)';
+                    setTimeout(() => alert.remove(), 300);
+                });
+            }
             
-            document.body.appendChild(notification);
-            
-            // Show animation
             setTimeout(() => {
-                notification.classList.add('show');
-            }, 100);
-            
-            // Remove after delay
-            setTimeout(() => {
-                notification.classList.remove('show');
-                setTimeout(() => {
-                    if (notification.parentNode) {
-                        notification.parentNode.removeChild(notification);
-                    }
-                }, 300);
-            }, 4000);
-        }
-
-        // Smooth scrolling for all anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
+                if (alert.parentNode) {
+                    alert.style.opacity = '0';
+                    alert.style.transform = 'translateY(-20px)';
+                    setTimeout(() => alert.remove(), 300);
                 }
-            });
+            }, 6000);
         });
 
-        // Parallax effect for hero section
+        // Parallax effect for hero
         window.addEventListener('scroll', function() {
             const scrolled = window.pageYOffset;
             const heroBackground = document.querySelector('.hero-background');
-            if (heroBackground) {
+            if (heroBackground && scrolled < 800) {
                 heroBackground.style.transform = `translateY(${scrolled * 0.5}px)`;
             }
         });
     });
-
-    // Add CSS for animations
-    const style = document.createElement('style');
-    style.textContent = `
-        @keyframes shake {
-            0%, 100% { transform: translateX(0); }
-            25% { transform: translateX(-5px); }
-            75% { transform: translateX(5px); }
-        }
-        
-        .notification {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            background: white;
-            padding: 1rem 1.5rem;
-            border-radius: 12px;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-            transform: translateX(100%);
-            opacity: 0;
-            transition: all 0.3s ease;
-            z-index: 1000;
-            max-width: 300px;
-        }
-        
-        .notification.show {
-            transform: translateX(0);
-            opacity: 1;
-        }
-        
-        .notification-error {
-            border-left: 4px solid #ef4444;
-            color: #dc2626;
-        }
-        
-        .notification-info {
-            border-left: 4px solid #3b82f6;
-            color: #2563eb;
-        }
-    `;
-    document.head.appendChild(style);
 </script>
 @endpush

@@ -25,8 +25,9 @@
                     <p>Over nearly three decades, JIDS Nepal has grown into a respected development organization, working in partnership with World Vision International Nepal and other stakeholders to implement comprehensive programs in education, health, water and sanitation, environmental conservation, and income generation.</p>
                 </div>
                 <div class="col-lg-6" data-aos="fade-left">
-                    <div class="about-image-wrapper">
-                        <img src="https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="JIDS Nepal Community Work" class="img-fluid rounded shadow-lg">
+                    <div class="about-image-wrapper position-relative" style="overflow: hidden; border-radius: 12px; background: #f0f0f0; min-height: 400px; display: flex; align-items: center; justify-content: center;">
+                        <img src="{{ asset('storage/images/about-us.jpg') }}" alt="JIDS Nepal Community Work" class="img-fluid" style="width: 100%; height: 100%; object-fit: cover; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.15);" loading="eager" decoding="async">
+                        <div class="position-absolute top-0 start-0 w-100 h-100" style="background: linear-gradient(135deg, rgba(37, 99, 235, 0.08), transparent); pointer-events: none; border-radius: 12px;"></div>
                     </div>
                 </div>
             </div>

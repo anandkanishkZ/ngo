@@ -159,10 +159,10 @@
                     </div>
                     <a href="{{ route('about') }}" class="btn btn-primary mt-3">Read Our Story</a>
                 </div>
-                <div class="col-lg-6" data-aos="fade-left">
-                    <div class="about-image-wrapper position-relative">
-                        <img src="https://images.unsplash.com/photo-1559027615-cd4628902d4a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="About Us" class="img-fluid rounded shadow-lg">
-                        <div class="position-absolute top-0 start-0 w-100 h-100 bg-primary opacity-10 rounded"></div>
+                <div class="col-lg-6">
+                    <div class="about-image-wrapper position-relative" style="overflow: hidden; border-radius: 12px; background: #f0f0f0; min-height: 400px; display: flex; align-items: center; justify-content: center;" data-aos="fade-left">
+                        <img src="{{ asset('storage/images/photo-jids.jpg') }}" alt="JIDS Nepal - About Us" class="img-fluid" style="width: 100%; height: 100%; object-fit: cover; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.15);" loading="eager" decoding="async">
+                        <div class="position-absolute top-0 start-0 w-100 h-100" style="background: linear-gradient(135deg, rgba(37, 99, 235, 0.08), transparent); pointer-events: none; border-radius: 12px;"></div>
                     </div>
                 </div>
             </div>

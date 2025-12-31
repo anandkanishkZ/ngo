@@ -172,9 +172,10 @@
             position: sticky;
             top: 0;
             z-index: 1000;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: box-shadow 0.3s ease, background 0.3s ease;
             backdrop-filter: blur(10px);
             border-bottom: 1px solid transparent;
+            will-change: box-shadow, background;
         }
         
         .main-header .row {
@@ -186,17 +187,17 @@
             box-shadow: 
                 0 4px 20px rgba(0,0,0,0.15),
                 0 1px 3px rgba(0,0,0,0.1);
-            padding: 12px 0;
             backdrop-filter: blur(20px);
             border-bottom: 1px solid rgba(0,0,0,0.1);
         }
 
+        /* Removed transform to prevent layout shift */
         .main-header.scrolled .logo-section {
-            transform: scale(0.95);
+            /* No changes needed */
         }
 
         .main-header.scrolled .logo-text {
-            font-size: 1.7rem;
+            /* Keep same size to prevent layout shift */
         }
 
         /* Professional scroll indicator */
@@ -628,6 +629,17 @@
         .main-nav > li > a.active {
             background: var(--secondary-color);
             color: white;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+        }
+        
+        /* Prevent layout shift on hover by using outline instead of border */
+        .main-nav > li > a {
+            outline: 2px solid transparent;
+            outline-offset: -2px;
+        }
+        
+        .main-nav > li > a:hover {
+            outline-color: transparent;
         }
 
         .main-nav .dropdown {
@@ -635,36 +647,35 @@
             display: flex;
             align-items: center;
         }
+        
+        .main-nav .dropdown::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            right: 0;
+            height: 10px;
+            background: transparent;
+        }
 
         .main-nav .dropdown-menu {
             display: none;
             position: absolute;
-            top: 100%;
+            top: calc(100% + 1px);
             left: 0;
             background: white;
             box-shadow: 0 8px 25px rgba(0,0,0,0.15);
-            border-radius: 8px;
+            border-radius: 0 0 8px 8px;
             padding: 8px 0;
             min-width: 200px;
             z-index: 1000;
-            margin-top: 5px;
+            margin-top: 0;
             border: 1px solid #e9ecef;
+            border-top: none;
         }
 
         .main-nav .dropdown:hover .dropdown-menu {
             display: block;
-            animation: slideDown 0.3s ease;
-        }
-        
-        @keyframes slideDown {
-            from {
-                opacity: 0;
-                transform: translateY(-10px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
         }
 
         .main-nav .dropdown-menu a {

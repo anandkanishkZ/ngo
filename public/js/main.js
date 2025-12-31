@@ -847,35 +847,18 @@ function initScrollEffects() {
         const scrollingDown = scrollTop > lastScrollTop;
         
         // Add/remove scrolled class based on scroll position
+        // Use requestAnimationFrame to prevent layout thrashing
         if (scrollTop > scrollThreshold) {
-            header.classList.add('scrolled');
-            
-            // Optional: Hide header when scrolling down, show when scrolling up
-            // Uncomment below for auto-hide behavior
-            /*
-            if (scrollingDown && scrollTop > 300) {
-                header.style.transform = 'translateY(-100%)';
-            } else {
-                header.style.transform = 'translateY(0)';
+            if (!header.classList.contains('scrolled')) {
+                header.classList.add('scrolled');
             }
-            */
-            
         } else {
-            header.classList.remove('scrolled');
-            header.style.transform = 'translateY(0)';
+            if (header.classList.contains('scrolled')) {
+                header.classList.remove('scrolled');
+            }
         }
         
         lastScrollTop = scrollTop;
-        
-        // Update navbar background with scroll progress
-        const scrollProgress = Math.min(scrollTop / scrollThreshold, 1);
-        const opacity = 0.95 + (0.05 * scrollProgress);
-        
-        if (scrollTop > scrollThreshold) {
-            header.style.background = `rgba(255, 255, 255, ${opacity})`;
-        } else {
-            header.style.background = 'white';
-        }
     }
     
     function onScroll() {
