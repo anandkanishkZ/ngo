@@ -16,6 +16,10 @@ use App\Http\Controllers\MediaController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\NewsletterController;
 use App\Http\Controllers\ReportController;
+use App\Http\Controllers\ImpactStoryController;
+use App\Http\Controllers\ActsPolicyController;
+use App\Http\Controllers\GalleryController;
+use App\Http\Controllers\CareerController;
 use App\Http\Controllers\Dashboard\AttachmentController;
 use App\Http\Controllers\Dashboard\NewsletterController as DashboardNewsletterController;
 use App\Http\Controllers\Dashboard\ContactMessageController;
@@ -48,8 +52,17 @@ Route::get('/projects/{project}', [ProjectController::class, 'show'])->name('pro
 
 // Events removed from the site
 
+// Impact Stories
+Route::get('/impact-stories', [ImpactStoryController::class, 'index'])->name('impact-stories.index');
+Route::get('/impact-stories/{story}', [ImpactStoryController::class, 'show'])->name('impact-stories.show');
+
+// Notices
 Route::get('/notices', [NoticeController::class, 'index'])->name('notices.index');
 Route::get('/notices/{notice}', [NoticeController::class, 'show'])->name('notices.show');
+
+// Acts/Policy
+Route::get('/acts-policy', [ActsPolicyController::class, 'index'])->name('acts-policy.index');
+Route::get('/acts-policy/{id}', [ActsPolicyController::class, 'show'])->name('acts-policy.show');
 
 // Reports
 Route::get('/reports', [ReportController::class, 'index'])->name('reports.index');
@@ -57,6 +70,13 @@ Route::get('/reports/{report}', [ReportController::class, 'show'])->name('report
 Route::get('/reports/{report}/download', [ReportController::class, 'download'])->name('reports.download');
 Route::get('/reports/type/{type}', [ReportController::class, 'byType'])->name('reports.by-type');
 
+// Gallery
+Route::get('/gallery/photos', [GalleryController::class, 'photos'])->name('gallery.photos');
+Route::get('/gallery/videos', [GalleryController::class, 'videos'])->name('gallery.videos');
+
+// Careers
+Route::get('/careers/vacancy', [CareerController::class, 'vacancy'])->name('careers.vacancy');
+Route::get('/careers/{id}', [CareerController::class, 'show'])->name('careers.show');
 
 // Contact
 Route::get('/contact', [ContactController::class, 'index'])->name('contact');
