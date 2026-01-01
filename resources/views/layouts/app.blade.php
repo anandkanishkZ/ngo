@@ -40,6 +40,17 @@
             line-height: 1.6;
             color: #333;
             overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        /* Smooth scroll with reduced motion support */
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+                scroll-behavior: auto !important;
+            }
         }
 
         /* Top Header Bar */
@@ -109,58 +120,366 @@
             font-size: 0.85rem;
         }
 
-        /* Top Header Mobile Responsiveness */
-        @media (max-width: 768px) {
+        /* Top Header Mobile Responsiveness - Hide on mobile */
+        @media (max-width: 991px) {
             .top-header {
-                padding: 10px 0;
-                font-size: 0.8rem;
-            }
-            
-            .top-header .contact-info {
-                justify-content: center;
-                flex-wrap: wrap;
-                gap: 15px;
-            }
-            
-            .top-header .col-md-8,
-            .top-header .col-md-4 {
-                text-align: center !important;
-                margin-bottom: 8px;
-            }
-            
-            .top-header .col-md-4 .d-flex {
-                justify-content: center !important;
-                flex-wrap: wrap;
-                gap: 15px;
-            }
-            
-            .top-header .contact-item {
-                font-size: 0.8rem;
-                margin-bottom: 5px;
-            }
-            
-            .top-header .social-links {
-                margin-left: 0;
-                justify-content: center;
-            }
-            
-            .top-header .social-links a {
-                width: 28px;
-                height: 28px;
-                font-size: 12px;
+                display: none;
             }
         }
 
-        @media (max-width: 576px) {
-            .top-header .contact-info {
-                flex-direction: column;
-                align-items: center;
-                gap: 8px;
+        /* Professional Left Drawer Menu Styles */
+        .drawer-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(4px);
+            z-index: 9998;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .drawer-overlay.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .drawer-menu {
+            position: fixed;
+            top: 0;
+            left: -320px;
+            width: 320px;
+            height: 100%;
+            background: white;
+            z-index: 9999;
+            box-shadow: 4px 0 30px rgba(0, 0, 0, 0.2);
+            transition: left 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            overflow-y: auto;
+            overflow-x: hidden;
+        }
+
+        .drawer-menu.show {
+            left: 0;
+        }
+
+        .drawer-header {
+            background: linear-gradient(135deg, var(--secondary-color), #d73527);
+            color: white;
+            padding: 25px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .drawer-brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .drawer-logo-icon {
+            width: 45px;
+            height: 45px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--secondary-color);
+            font-size: 20px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .drawer-brand-text {
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin: 0;
+            letter-spacing: -0.5px;
+        }
+
+        .drawer-close {
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1.2rem;
+        }
+
+        .drawer-close:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: rotate(90deg);
+        }
+
+        .drawer-nav {
+            padding: 15px 0;
+        }
+
+        .drawer-nav-item {
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .drawer-nav-link {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 16px 20px;
+            color: #333;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 15px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .drawer-nav-link::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 4px;
+            height: 100%;
+            background: var(--secondary-color);
+            transform: scaleY(0);
+            transition: transform 0.3s ease;
+        }
+
+        .drawer-nav-link:hover,
+        .drawer-nav-link.active {
+            background: rgba(231, 76, 60, 0.05);
+            color: var(--secondary-color);
+            padding-left: 28px;
+        }
+
+        .drawer-nav-link:hover::before,
+        .drawer-nav-link.active::before {
+            transform: scaleY(1);
+        }
+
+        .drawer-nav-link i {
+            margin-right: 12px;
+            width: 20px;
+            text-align: center;
+            font-size: 16px;
+        }
+
+        .drawer-nav-text {
+            flex: 1;
+        }
+
+        .drawer-dropdown-toggle {
+            background: none;
+            border: none;
+            color: #999;
+            font-size: 12px;
+            cursor: pointer;
+            padding: 0;
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .drawer-dropdown-toggle i {
+            transition: transform 0.3s ease;
+        }
+
+        .drawer-dropdown-toggle.open i {
+            transform: rotate(180deg);
+        }
+
+        .drawer-submenu {
+            max-height: 0;
+            overflow: hidden;
+            background: #f8f9fa;
+            transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .drawer-submenu.show {
+            max-height: 500px;
+        }
+
+        .drawer-submenu a {
+            display: block;
+            padding: 12px 20px 12px 60px;
+            color: #666;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .drawer-submenu a::before {
+            content: '•';
+            position: absolute;
+            left: 45px;
+            color: var(--secondary-color);
+            font-size: 20px;
+        }
+
+        .drawer-submenu a:hover {
+            background: rgba(231, 76, 60, 0.08);
+            color: var(--secondary-color);
+            padding-left: 65px;
+        }
+
+        .drawer-footer {
+            padding: 20px;
+            background: #f8f9fa;
+            border-top: 1px solid #e9ecef;
+            margin-top: auto;
+        }
+
+        .drawer-contact-info {
+            margin-bottom: 15px;
+        }
+
+        .drawer-contact-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 10px;
+            font-size: 13px;
+            color: #666;
+        }
+
+        .drawer-contact-item i {
+            color: var(--secondary-color);
+            width: 18px;
+            text-align: center;
+        }
+
+        .drawer-social-links {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .drawer-social-link {
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            background: white;
+            border: 1px solid #e9ecef;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #666;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .drawer-social-link:hover {
+            background: var(--secondary-color);
+            color: white;
+            border-color: var(--secondary-color);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(231, 76, 60, 0.3);
+        }
+
+        /* Hamburger Menu Button */
+        .hamburger-btn {
+            display: none;
+            flex-direction: column;
+            justify-content: space-around;
+            width: 32px;
+            height: 26px;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            padding: 0;
+            z-index: 10;
+            transition: all 0.3s ease;
+        }
+
+        .hamburger-btn:hover {
+            transform: scale(1.1);
+        }
+
+        .hamburger-line {
+            width: 100%;
+            height: 3px;
+            background: #333;
+            border-radius: 3px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            transform-origin: center;
+        }
+
+        .hamburger-btn.active .hamburger-line:nth-child(1) {
+            transform: translateY(9px) rotate(45deg);
+        }
+
+        .hamburger-btn.active .hamburger-line:nth-child(2) {
+            opacity: 0;
+            transform: translateX(-20px);
+        }
+
+        .hamburger-btn.active .hamburger-line:nth-child(3) {
+            transform: translateY(-9px) rotate(-45deg);
+        }
+
+        .main-header.scrolled .hamburger-line {
+            background: #333;
+        }
+
+        /* Desktop Navigation Improvements */
+        @media (min-width: 992px) {
+            .hamburger-btn {
+                display: none !important;
             }
             
-            .top-header .col-md-4 .d-flex {
-                flex-direction: column;
-                gap: 10px;
+            .drawer-overlay,
+            .drawer-menu {
+                display: none;
+            }
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 991px) {
+            .hamburger-btn {
+                display: flex;
+            }
+
+            .main-nav {
+                display: none !important;
+            }
+
+            .mobile-toggle {
+                display: none !important;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .drawer-menu {
+                width: 280px;
+                left: -280px;
+            }
+
+            .drawer-brand-text {
+                font-size: 1.2rem;
+            }
+
+            .drawer-logo-icon {
+                width: 40px;
+                height: 40px;
+                font-size: 18px;
             }
         }
 
@@ -168,14 +487,26 @@
         .main-header {
             background: white;
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            padding: 20px 0;
+            padding: 15px 0;
             position: sticky;
             top: 0;
             z-index: 1000;
-            transition: box-shadow 0.3s ease, background 0.3s ease;
+            transition: all 0.3s ease, padding 0.3s ease;
             backdrop-filter: blur(10px);
             border-bottom: 1px solid transparent;
-            will-change: box-shadow, background;
+            will-change: box-shadow, background, padding;
+        }
+
+        @media (max-width: 768px) {
+            .main-header {
+                padding: 18px 0;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .main-header {
+                padding: 16px 0;
+            }
         }
         
         .main-header .row {
@@ -539,6 +870,18 @@
             letter-spacing: -0.5px;
         }
 
+        @media (max-width: 768px) {
+            .logo-text {
+                font-size: 1.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .logo-text {
+                font-size: 1.3rem;
+            }
+        }
+
         .logo-tagline {
             color: #666;
             font-size: 0.85rem;
@@ -739,6 +1082,21 @@
             align-items: center;
             position: relative;
             overflow: hidden;
+            padding: 60px 0;
+        }
+
+        @media (max-width: 768px) {
+            .hero-section {
+                min-height: calc(100vh - 100px);
+                padding: 40px 0;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-section {
+                min-height: calc(100vh - 80px);
+                padding: 30px 0;
+            }
         }
 
         .hero-section::before {
@@ -798,12 +1156,20 @@
             border-radius: 50px;
             transition: all 0.3s ease;
             box-shadow: 0 5px 15px rgba(243, 156, 18, 0.3);
+            cursor: pointer;
+            display: inline-block;
+            text-decoration: none;
         }
 
         .btn-primary:hover {
             background: #e67e22;
             transform: translateY(-2px);
             box-shadow: 0 8px 25px rgba(243, 156, 18, 0.4);
+            text-decoration: none;
+        }
+
+        .btn-primary:active {
+            transform: translateY(0);
         }
 
         .btn-secondary {
@@ -815,17 +1181,57 @@
             border-radius: 50px;
             transition: all 0.3s ease;
             margin-left: 1rem;
+            cursor: pointer;
+            display: inline-block;
+            text-decoration: none;
         }
 
         .btn-secondary:hover {
             background: white;
             color: var(--primary-color);
             transform: translateY(-2px);
+            text-decoration: none;
+        }
+
+        .btn-secondary:active {
+            transform: translateY(0);
+        }
+
+        @media (max-width: 768px) {
+            .btn-primary,
+            .btn-secondary {
+                padding: 10px 24px;
+                font-size: 14px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .btn-primary,
+            .btn-secondary {
+                padding: 8px 20px;
+                font-size: 13px;
+                width: 100%;
+                text-align: center;
+                margin-left: 0;
+                margin-top: 0.5rem;
+            }
         }
 
         /* Section Styles */
         .section-padding {
             padding: 80px 0;
+        }
+
+        @media (max-width: 768px) {
+            .section-padding {
+                padding: 60px 0;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .section-padding {
+                padding: 40px 0;
+            }
         }
 
         .section-title {
@@ -835,6 +1241,32 @@
             margin-bottom: 3rem;
             color: var(--primary-color);
             position: relative;
+            animation: fadeInDown 0.8s ease;
+        }
+
+        @media (max-width: 768px) {
+            .section-title {
+                font-size: 2rem;
+                margin-bottom: 2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .section-title {
+                font-size: 1.5rem;
+                margin-bottom: 1.5rem;
+            }
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         .section-title::after {
@@ -855,6 +1287,7 @@
             border-radius: 15px;
             transition: all 0.3s ease;
             overflow: hidden;
+            height: 100%;
         }
 
         .custom-card:hover {
@@ -862,10 +1295,22 @@
             box-shadow: 0 20px 40px rgba(0,0,0,0.15);
         }
 
+        @media (max-width: 768px) {
+            .custom-card:hover {
+                transform: translateY(-5px);
+            }
+        }
+
         .card-img-top {
             height: 200px;
             object-fit: cover;
             transition: transform 0.3s ease;
+        }
+
+        @media (max-width: 480px) {
+            .card-img-top {
+                height: 180px;
+            }
         }
 
         .custom-card:hover .card-img-top {
@@ -879,20 +1324,62 @@
             padding: 60px 0;
         }
 
+        @media (max-width: 768px) {
+            .stats-section {
+                padding: 40px 0;
+            }
+        }
+
         .stat-item {
             text-align: center;
             padding: 20px;
+            animation: fadeInUp 0.8s ease;
+        }
+
+        @media (max-width: 480px) {
+            .stat-item {
+                padding: 15px 10px;
+            }
         }
 
         .stat-number {
             font-size: 3rem;
             font-weight: 700;
             color: var(--accent-color);
+            transition: transform 0.3s ease;
+        }
+
+        @media (max-width: 768px) {
+            .stat-number {
+                font-size: 2.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .stat-number {
+                font-size: 2rem;
+            }
+        }
+
+        .stat-item:hover .stat-number {
+            transform: scale(1.1);
         }
 
         .stat-label {
             font-size: 1.2rem;
             margin-top: 10px;
+        }
+
+        @media (max-width: 768px) {
+            .stat-label {
+                font-size: 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .stat-label {
+                font-size: 0.9rem;
+            }
         }
 
         /* Modern Professional Footer with Clean Single Color */
@@ -1225,7 +1712,7 @@
             }
         }
 
-        /* Responsive Design */
+        /* Hero Responsive Design */
         @media (max-width: 768px) {
             .hero-title {
                 font-size: 2.5rem;
@@ -1234,10 +1721,25 @@
             .hero-subtitle {
                 font-size: 1.1rem;
             }
+        }
+
+        @media (max-width: 576px) {
+            .hero-title {
+                font-size: 2rem;
+            }
             
-            .btn-secondary {
-                margin-left: 0;
-                margin-top: 1rem;
+            .hero-subtitle {
+                font-size: 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-title {
+                font-size: 1.75rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 0.95rem;
             }
         }
 
@@ -1275,11 +1777,20 @@
             border-radius: 10px;
             padding: 12px 15px;
             transition: all 0.3s ease;
+            font-size: 15px;
         }
 
         .form-control:focus {
             border-color: var(--accent-color);
             box-shadow: 0 0 0 0.2rem rgba(243, 156, 18, 0.25);
+            outline: none;
+        }
+
+        @media (max-width: 480px) {
+            .form-control {
+                padding: 10px 12px;
+                font-size: 14px;
+            }
         }
 
         .donation-amount-btn {
@@ -1290,12 +1801,23 @@
             border-radius: 25px;
             margin: 5px;
             transition: all 0.3s ease;
+            cursor: pointer;
         }
 
         .donation-amount-btn:hover,
         .donation-amount-btn.active {
             background: var(--primary-color);
             color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(44, 62, 80, 0.2);
+        }
+
+        @media (max-width: 480px) {
+            .donation-amount-btn {
+                padding: 8px 16px;
+                font-size: 14px;
+                margin: 3px;
+            }
         }
     </style>
 
@@ -1305,6 +1827,143 @@
     <!-- Loading Screen -->
     <div class="loading" id="loading">
         <div class="spinner"></div>
+    </div>
+
+    <!-- Drawer Overlay -->
+    <div class="drawer-overlay" id="drawerOverlay" onclick="closeDrawer()"></div>
+
+    <!-- Professional Left Drawer Menu -->
+    <div class="drawer-menu" id="drawerMenu">
+        <div class="drawer-header">
+            <div class="drawer-brand">
+                <div class="drawer-logo-icon">
+                    <i class="fas fa-heart"></i>
+                </div>
+                <h2 class="drawer-brand-text">JIDS Nepal</h2>
+            </div>
+            <button class="drawer-close" onclick="closeDrawer()" aria-label="Close menu">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+
+        <nav class="drawer-nav">
+            <div class="drawer-nav-item">
+                <a href="{{ route('home') }}" class="drawer-nav-link {{ request()->routeIs('home') ? 'active' : '' }}">
+                    <i class="fas fa-home"></i>
+                    <span class="drawer-nav-text">Home</span>
+                </a>
+            </div>
+
+            <div class="drawer-nav-item">
+                <div class="drawer-nav-link" onclick="toggleDrawerSubmenu(this)">
+                    <i class="fas fa-users"></i>
+                    <span class="drawer-nav-text">About Us</span>
+                    <button class="drawer-dropdown-toggle" type="button">
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                </div>
+                <div class="drawer-submenu">
+                    <a href="{{ route('about') }}">About JIDS Nepal</a>
+                    <a href="{{ route('team') }}">Our Team</a>
+                </div>
+            </div>
+
+            <div class="drawer-nav-item">
+                <div class="drawer-nav-link" onclick="toggleDrawerSubmenu(this)">
+                    <i class="fas fa-handshake"></i>
+                    <span class="drawer-nav-text">What We Do?</span>
+                    <button class="drawer-dropdown-toggle" type="button">
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                </div>
+                <div class="drawer-submenu">
+                    <a href="{{ route('impact-areas.index') }}">Thematic Areas</a>
+                    <a href="{{ route('projects.ongoing') }}">Ongoing Projects</a>
+                    <a href="{{ route('projects.completed') }}">Completed Projects</a>
+                </div>
+            </div>
+
+            <div class="drawer-nav-item">
+                <div class="drawer-nav-link" onclick="toggleDrawerSubmenu(this)">
+                    <i class="fas fa-book"></i>
+                    <span class="drawer-nav-text">Publication</span>
+                    <button class="drawer-dropdown-toggle" type="button">
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                </div>
+                <div class="drawer-submenu">
+                    <a href="{{ route('impact-stories.index') }}">Impact Story</a>
+                    <a href="{{ route('reports.index') }}">Reports</a>
+                    <a href="{{ route('notices.index') }}">Notices</a>
+                    <a href="{{ route('acts-policy.index') }}">Acts/Policy</a>
+                </div>
+            </div>
+
+            <div class="drawer-nav-item">
+                <div class="drawer-nav-link" onclick="toggleDrawerSubmenu(this)">
+                    <i class="fas fa-images"></i>
+                    <span class="drawer-nav-text">Gallery</span>
+                    <button class="drawer-dropdown-toggle" type="button">
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                </div>
+                <div class="drawer-submenu">
+                    <a href="{{ route('gallery.photos') }}">Photos</a>
+                    <a href="{{ route('gallery.videos') }}">Videos</a>
+                </div>
+            </div>
+
+            <div class="drawer-nav-item">
+                <div class="drawer-nav-link" onclick="toggleDrawerSubmenu(this)">
+                    <i class="fas fa-briefcase"></i>
+                    <span class="drawer-nav-text">Careers</span>
+                    <button class="drawer-dropdown-toggle" type="button">
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                </div>
+                <div class="drawer-submenu">
+                    <a href="{{ route('careers.vacancy') }}">Vacancy</a>
+                </div>
+            </div>
+
+            <div class="drawer-nav-item">
+                <a href="{{ route('contact') }}" class="drawer-nav-link {{ request()->routeIs('contact*') ? 'active' : '' }}">
+                    <i class="fas fa-envelope"></i>
+                    <span class="drawer-nav-text">Contact Us</span>
+                </a>
+            </div>
+        </nav>
+
+        <div class="drawer-footer">
+            <div class="drawer-contact-info">
+                <div class="drawer-contact-item">
+                    <i class="fas fa-phone"></i>
+                    <span>+977 035-420928</span>
+                </div>
+                <div class="drawer-contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <span>info@jidsnepal.org.np</span>
+                </div>
+                <div class="drawer-contact-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>Udayapur, Nepal</span>
+                </div>
+            </div>
+            <div class="drawer-social-links">
+                <a href="#" class="drawer-social-link" title="Facebook">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+                <a href="#" class="drawer-social-link" title="Twitter">
+                    <i class="fab fa-twitter"></i>
+                </a>
+                <a href="#" class="drawer-social-link" title="Instagram">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="#" class="drawer-social-link" title="LinkedIn">
+                    <i class="fab fa-linkedin-in"></i>
+                </a>
+            </div>
+        </div>
     </div>
 
     <!-- Top Header Bar -->
@@ -1331,16 +1990,25 @@
     <header class="main-header">
         <div class="container">
             <div class="row align-items-center">
-                <div class="col-md-4">
-                    <div class="logo-section">
-                        <div>
-                            <a href="{{ route('home') }}" style="text-decoration: none; color: inherit;">
-                                <h1 class="logo-text">JIDS Nepal</h1>
-                            </a>
+                <div class="col-6 col-md-4">
+                    <div class="d-flex align-items-center gap-3">
+                        <!-- Hamburger Menu for Mobile -->
+                        <button class="hamburger-btn" id="hamburgerBtn" onclick="toggleDrawer()" aria-label="Open menu" type="button">
+                            <span class="hamburger-line"></span>
+                            <span class="hamburger-line"></span>
+                            <span class="hamburger-line"></span>
+                        </button>
+                        
+                        <div class="logo-section">
+                            <div>
+                                <a href="{{ route('home') }}" style="text-decoration: none; color: inherit;">
+                                    <h1 class="logo-text">JIDS Nepal</h1>
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-8">
+                <div class="col-6 col-md-8">
                     <div class="d-flex justify-content-end align-items-center">
                         <button class="mobile-toggle" type="button" onclick="toggleMobileNav()">
                             <i class="fas fa-bars"></i>
@@ -1741,6 +2409,71 @@
             const nav = document.getElementById('mainNav');
             nav.classList.toggle('show');
         }
+
+        // Drawer Menu Functions
+        function toggleDrawer() {
+            const drawer = document.getElementById('drawerMenu');
+            const overlay = document.getElementById('drawerOverlay');
+            const hamburger = document.getElementById('hamburgerBtn');
+            
+            drawer.classList.toggle('show');
+            overlay.classList.toggle('show');
+            hamburger.classList.toggle('active');
+            
+            // Prevent body scroll when drawer is open
+            if (drawer.classList.contains('show')) {
+                document.body.style.overflow = 'hidden';
+            } else {
+                document.body.style.overflow = '';
+            }
+        }
+
+        function closeDrawer() {
+            const drawer = document.getElementById('drawerMenu');
+            const overlay = document.getElementById('drawerOverlay');
+            const hamburger = document.getElementById('hamburgerBtn');
+            
+            drawer.classList.remove('show');
+            overlay.classList.remove('show');
+            hamburger.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        function toggleDrawerSubmenu(element) {
+            const submenu = element.nextElementSibling;
+            const toggle = element.querySelector('.drawer-dropdown-toggle');
+            
+            // Close other open submenus
+            document.querySelectorAll('.drawer-submenu.show').forEach(menu => {
+                if (menu !== submenu) {
+                    menu.classList.remove('show');
+                    menu.previousElementSibling.querySelector('.drawer-dropdown-toggle').classList.remove('open');
+                }
+            });
+            
+            // Toggle current submenu
+            submenu.classList.toggle('show');
+            toggle.classList.toggle('open');
+        }
+
+        // Close drawer when clicking on a link
+        document.addEventListener('DOMContentLoaded', function() {
+            const drawerLinks = document.querySelectorAll('.drawer-nav-link[href], .drawer-submenu a');
+            drawerLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    if (this.getAttribute('href') && this.getAttribute('href') !== '#') {
+                        closeDrawer();
+                    }
+                });
+            });
+        });
+
+        // Close drawer on escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeDrawer();
+            }
+        });
 
         // Initialize AOS
         AOS.init({
