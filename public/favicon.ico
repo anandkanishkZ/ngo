@@ -1,0 +1,12 @@
+<!-- Simple SVG favicon for nonprofit organization -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32">
+  <!-- Background circle -->
+  <circle cx="16" cy="16" r="15" fill="#4f46e5" stroke="#1e40af" stroke-width="1"/>
+  
+  <!-- Heart symbol for nonprofit -->
+  <path d="M16 26c-1-1-8-6-8-12 0-3 2-5 5-5 2 0 3 1 3 1s1-1 3-1c3 0 5 2 5 5 0 6-7 11-8 12z" fill="white"/>
+  
+  <!-- Small plus sign -->
+  <rect x="14.5" y="6" width="3" height="8" fill="#4f46e5"/>
+  <rect x="10.5" y="8" width="11" height="2" fill="#4f46e5"/>
+</svg>

@@ -1,0 +1,1 @@
+<?php // Events feature removed
