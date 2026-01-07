@@ -149,7 +149,7 @@
                 </div>
                 <div class="col-lg-6">
                     <div class="about-image-wrapper position-relative" style="overflow: hidden; border-radius: 12px; background: #f0f0f0; min-height: 400px; display: flex; align-items: center; justify-content: center;" data-aos="fade-left">
-                        <img src="{{ asset('images/photo-jids.jpg') }}" alt="JIDS Nepal - About Us" class="img-fluid" style="width: 100%; height: 100%; object-fit: cover; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.15);" loading="eager" decoding="async">
+                        <img src="{{ asset('images/photo-jids.jpg') }}" alt="JIDS Nepal - About Us" class="img-fluid" style="width: 100%; height: 100%; object-fit: cover; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.15);" loading="lazy" decoding="async">
                         <div class="position-absolute top-0 start-0 w-100 h-100" style="background: linear-gradient(135deg, rgba(37, 99, 235, 0.08), transparent); pointer-events: none; border-radius: 12px;"></div>
                     </div>
                 </div>
@@ -229,13 +229,13 @@
                             
                             <!-- Text Content -->
                             <div class="value-content" style="flex: 1;">
-                                <h5 style="
+                                <h3 style="
                                     font-size: 1.05rem;
                                     font-weight: 600;
                                     color: #1e293b;
                                     margin: 0;
                                     line-height: 1.4;
-                                ">{{ $value['title'] }}</h5>
+                                ">{{ $value['title'] }}</h3>
                             </div>
                         </div>
                     </div>
@@ -379,7 +379,7 @@
                                 <div class="icon-bg" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 90px; height: 90px; background: linear-gradient(135deg, #3498db15, #3498db25); border-radius: 50%;"></div>
                                 <i class="fas fa-graduation-cap" style="font-size: 3rem; color: #3498db; position: relative; z-index: 2;"></i>
                             </div>
-                            <h4 style="font-size: 1.5rem; font-weight: 700; color: #2c3e50; margin-bottom: 16px;">Education</h4>
+                            <h3 style="font-size: 1.5rem; font-weight: 700; color: #2c3e50; margin-bottom: 16px;">Education</h3>
                             <p style="color: #666; line-height: 1.6;">Providing quality education and learning opportunities to underserved communities, building brighter futures for children worldwide.</p>
                         </div>
                     </div>
@@ -389,7 +389,7 @@
                                 <div class="icon-bg" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 90px; height: 90px; background: linear-gradient(135deg, #e74c3c15, #e74c3c25); border-radius: 50%;"></div>
                                 <i class="fas fa-heartbeat" style="font-size: 3rem; color: #e74c3c; position: relative; z-index: 2;"></i>
                             </div>
-                            <h4 style="font-size: 1.5rem; font-weight: 700; color: #2c3e50; margin-bottom: 16px;">Healthcare</h4>
+                            <h3 style="font-size: 1.5rem; font-weight: 700; color: #2c3e50; margin-bottom: 16px;">Healthcare</h3>
                             <p style="color: #666; line-height: 1.6;">Delivering essential medical care and health education to communities lacking access to basic healthcare services.</p>
                         </div>
                     </div>
@@ -399,7 +399,7 @@
                                 <div class="icon-bg" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 90px; height: 90px; background: linear-gradient(135deg, #27ae6015, #27ae6025); border-radius: 50%;"></div>
                                 <i class="fas fa-leaf" style="font-size: 3rem; color: #27ae60; position: relative; z-index: 2;"></i>
                             </div>
-                            <h4 style="font-size: 1.5rem; font-weight: 700; color: #2c3e50; margin-bottom: 16px;">Environment</h4>
+                            <h3 style="font-size: 1.5rem; font-weight: 700; color: #2c3e50; margin-bottom: 16px;">Environment</h3>
                             <p style="color: #666; line-height: 1.6;">Protecting our planet through conservation efforts, sustainable practices, and environmental education programs.</p>
                         </div>
                     </div>
@@ -501,35 +501,9 @@
             @else
                 <!-- Fallback content when no partners are available -->
                 <div class="row align-items-center justify-content-center g-4">
-                    <div class="col-lg-2 col-md-3 col-6" data-aos="fade-up" data-aos-delay="100">
-                        <div class="partner-logo" style="background: white; border-radius: 15px; padding: 2rem; text-align: center; box-shadow: 0 5px 20px rgba(0,0,0,0.05); transition: all 0.3s ease; height: 120px; display: flex; align-items: center; justify-content: center;">
-                            <img src="https://via.placeholder.com/120x60/3498db/ffffff?text=UNICEF" alt="UNICEF" style="max-width: 100%; max-height: 60px; filter: grayscale(100%); transition: filter 0.3s ease;">
-                        </div>
-                    </div>
-                    <div class="col-lg-2 col-md-3 col-6" data-aos="fade-up" data-aos-delay="200">
-                        <div class="partner-logo" style="background: white; border-radius: 15px; padding: 2rem; text-align: center; box-shadow: 0 5px 20px rgba(0,0,0,0.05); transition: all 0.3s ease; height: 120px; display: flex; align-items: center; justify-content: center;">
-                            <img src="https://via.placeholder.com/120x60/e74c3c/ffffff?text=WHO" alt="World Health Organization" style="max-width: 100%; max-height: 60px; filter: grayscale(100%); transition: filter 0.3s ease;">
-                        </div>
-                    </div>
-                    <div class="col-lg-2 col-md-3 col-6" data-aos="fade-up" data-aos-delay="300">
-                        <div class="partner-logo" style="background: white; border-radius: 15px; padding: 2rem; text-align: center; box-shadow: 0 5px 20px rgba(0,0,0,0.05); transition: all 0.3s ease; height: 120px; display: flex; align-items: center; justify-content: center;">
-                            <img src="https://via.placeholder.com/120x60/27ae60/ffffff?text=UNESCO" alt="UNESCO" style="max-width: 100%; max-height: 60px; filter: grayscale(100%); transition: filter 0.3s ease;">
-                        </div>
-                    </div>
-                    <div class="col-lg-2 col-md-3 col-6" data-aos="fade-up" data-aos-delay="400">
-                        <div class="partner-logo" style="background: white; border-radius: 15px; padding: 2rem; text-align: center; box-shadow: 0 5px 20px rgba(0,0,0,0.05); transition: all 0.3s ease; height: 120px; display: flex; align-items: center; justify-content: center;">
-                            <img src="https://via.placeholder.com/120x60/9b59b6/ffffff?text=Gates+Found" alt="Gates Foundation" style="max-width: 100%; max-height: 60px; filter: grayscale(100%); transition: filter 0.3s ease;">
-                        </div>
-                    </div>
-                    <div class="col-lg-2 col-md-3 col-6" data-aos="fade-up" data-aos-delay="500">
-                        <div class="partner-logo" style="background: white; border-radius: 15px; padding: 2rem; text-align: center; box-shadow: 0 5px 20px rgba(0,0,0,0.05); transition: all 0.3s ease; height: 120px; display: flex; align-items: center; justify-content: center;">
-                            <img src="https://via.placeholder.com/120x60/f39c12/ffffff?text=Oxfam" alt="Oxfam" style="max-width: 100%; max-height: 60px; filter: grayscale(100%); transition: filter 0.3s ease;">
-                        </div>
-                    </div>
-                    <div class="col-lg-2 col-md-3 col-6" data-aos="fade-up" data-aos-delay="600">
-                        <div class="partner-logo" style="background: white; border-radius: 15px; padding: 2rem; text-align: center; box-shadow: 0 5px 20px rgba(0,0,0,0.05); transition: all 0.3s ease; height: 120px; display: flex; align-items: center; justify-content: center;">
-                            <img src="https://via.placeholder.com/120x60/2c3e50/ffffff?text=UN+WFP" alt="UN World Food Programme" style="max-width: 100%; max-height: 60px; filter: grayscale(100%); transition: filter 0.3s ease;">
-                        </div>
+                    <!-- Hide fallback partners if there are actual partners -->
+                    <div class="col-12 text-center text-muted py-5">
+                        <p>We're proud to collaborate with various organizations. Partner logos will appear here once configured.</p>
                     </div>
                 </div>
             @endif

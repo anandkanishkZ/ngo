@@ -491,35 +491,8 @@
             @else
                 <!-- Fallback content when no partners are available -->
                 <div class="row align-items-center justify-content-center g-4" data-aos="fade-up" data-aos-delay="100">
-                    <div class="col-lg-2 col-md-3 col-6" data-aos="fade-up" data-aos-delay="100">
-                        <div class="partner-logo-fallback">
-                            <img src="https://via.placeholder.com/120x60/3498db/ffffff?text=UNICEF" alt="UNICEF">
-                        </div>
-                    </div>
-                    <div class="col-lg-2 col-md-3 col-6" data-aos="fade-up" data-aos-delay="200">
-                        <div class="partner-logo-fallback">
-                            <img src="https://via.placeholder.com/120x60/e74c3c/ffffff?text=WHO" alt="World Health Organization">
-                        </div>
-                    </div>
-                    <div class="col-lg-2 col-md-3 col-6" data-aos="fade-up" data-aos-delay="300">
-                        <div class="partner-logo-fallback">
-                            <img src="https://via.placeholder.com/120x60/27ae60/ffffff?text=UNESCO" alt="UNESCO">
-                        </div>
-                    </div>
-                    <div class="col-lg-2 col-md-3 col-6" data-aos="fade-up" data-aos-delay="400">
-                        <div class="partner-logo-fallback">
-                            <img src="https://via.placeholder.com/120x60/9b59b6/ffffff?text=Gates+Found" alt="Gates Foundation">
-                        </div>
-                    </div>
-                    <div class="col-lg-2 col-md-3 col-6" data-aos="fade-up" data-aos-delay="500">
-                        <div class="partner-logo-fallback">
-                            <img src="https://via.placeholder.com/120x60/f39c12/ffffff?text=Oxfam" alt="Oxfam">
-                        </div>
-                    </div>
-                    <div class="col-lg-2 col-md-3 col-6" data-aos="fade-up" data-aos-delay="600">
-                        <div class="partner-logo-fallback">
-                            <img src="https://via.placeholder.com/120x60/2c3e50/ffffff?text=UN+WFP" alt="UN World Food Programme">
-                        </div>
+                    <div class="col-12 text-center text-muted py-5">
+                        <p>We're proud to collaborate with various organizations. Partner logos will appear here once configured.</p>
                     </div>
                 </div>
             @endif

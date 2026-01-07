@@ -2110,7 +2110,7 @@
                     
             <!-- Quick Links -->
                     <div class="col-lg-2 col-md-6">
-                        <h6 class="footer-section-title">Explore</h6>
+                        <h3 class="footer-section-title">Explore</h3>
                         <ul class="footer-links">
                 <li><a href="{{ route('about') }}"><i class="fas fa-users"></i>About Us</a></li>
                 <li><a href="{{ route('team') }}"><i class="fas fa-user-friends"></i>Our Team</a></li>
@@ -2122,7 +2122,7 @@
                     
             <!-- Get Involved -->
                     <div class="col-lg-2 col-md-6">
-                        <h6 class="footer-section-title">Take Action</h6>
+                        <h3 class="footer-section-title">Take Action</h3>
                         <ul class="footer-links">
                             {{-- Volunteer removed --}}
                             <li><a href="{{ route('contact', ['type' => 'partnership']) }}"><i class="fas fa-handshake"></i>Partner With Us</a></li>
@@ -2134,7 +2134,7 @@
                     
                     <!-- Contact Information -->
                     <div class="col-lg-4 col-md-6">
-                        <h6 class="footer-section-title">Get in Touch</h6>
+                        <h3 class="footer-section-title">Get in Touch</h3>
                         <ul class="contact-info">
                             <li>
                                 <i class="fas fa-map-marker-alt"></i>
