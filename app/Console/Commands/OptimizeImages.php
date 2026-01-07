@@ -4,7 +4,8 @@ namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\File;
-use Intervention\Image\Facades\Image;
+use Intervention\Image\ImageManager;
+use Intervention\Image\Drivers\Gd\Driver;
 
 class OptimizeImages extends Command
 {
@@ -21,6 +22,7 @@ class OptimizeImages extends Command
             return 1;
         }
 
+        $manager = new ImageManager(new Driver());
         $files = File::allFiles($path);
         $bar = $this->output->createProgressBar(count($files));
         $optimized = 0;
@@ -30,26 +32,23 @@ class OptimizeImages extends Command
             
             if (in_array($extension, ['jpg', 'jpeg', 'png'])) {
                 try {
-                    $image = Image::make($file->getRealPath());
+                    $image = $manager->read($file->getRealPath());
                     
                     // Resize if too large
                     if ($image->width() > 1600) {
-                        $image->resize(1600, null, function ($constraint) {
-                            $constraint->aspectRatio();
-                            $constraint->upsize();
-                        });
+                        $image->scale(width: 1600);
                     }
                     
                     // Save optimized version
-                    $image->save($file->getRealPath(), $quality);
+                    $image->save($file->getRealPath(), quality: $quality);
                     
                     // Create WebP version
                     $webpPath = $file->getPath() . '/' . $file->getFilenameWithoutExtension() . '.webp';
-                    $image->encode('webp', $quality)->save($webpPath);
+                    $image->toWebp(quality: $quality)->save($webpPath);
                     
                     $optimized++;
                 } catch (\Exception $e) {
-                    $this->error("Failed to optimize: {$file->getFilename()}");
+                    $this->error("Failed to optimize: {$file->getFilename()} - " . $e->getMessage());
                 }
             }
             
