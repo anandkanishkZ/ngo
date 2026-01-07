@@ -23,6 +23,7 @@ use App\Http\Controllers\CareerController;
 use App\Http\Controllers\Dashboard\AttachmentController;
 use App\Http\Controllers\Dashboard\NewsletterController as DashboardNewsletterController;
 use App\Http\Controllers\Dashboard\ContactMessageController;
+use App\Http\Controllers\SitemapController;
 
 /*
 |--------------------------------------------------------------------------
@@ -34,6 +35,20 @@ use App\Http\Controllers\Dashboard\ContactMessageController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+
+// Sitemap routes
+Route::get('/sitemap.xml', [SitemapController::class, 'index']);
+Route::get('/sitemap/pages.xml', [SitemapController::class, 'pages']);
+Route::get('/sitemap/notices.xml', [SitemapController::class, 'notices']);
+Route::get('/sitemap/projects.xml', [SitemapController::class, 'projects']);
+Route::get('/sitemap/reports.xml', [SitemapController::class, 'reports']);
+Route::get('/sitemap/gallery.xml', [SitemapController::class, 'gallery']);
+Route::get('/sitemap/vacancies.xml', [SitemapController::class, 'vacancies']);
+
+// Robots.txt
+Route::get('/robots.txt', function () {
+    return response()->view('robots', [], 200)->header('Content-Type', 'text/plain');
+});
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
