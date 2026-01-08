@@ -14,50 +14,50 @@ class ImpactAreaSeeder extends Seeder
     {
         $impactAreas = [
             [
-                'title' => 'Education',
-                'description' => 'Providing quality education and learning opportunities to underserved communities, building brighter futures for children worldwide.',
-                'icon' => 'fa-solid fa-graduation-cap',
-                'color' => '#3498db',
+                'title' => 'Child Protection',
+                'description' => 'JIDS works to safeguard children from abuse, neglect, exploitation, and violence while promoting their rights, participation, and well-being.',
+                'icon' => 'fa-solid fa-shield-alt',
+                'color' => '#e74c3c',
                 'sort_order' => 1,
                 'is_active' => true
             ],
             [
-                'title' => 'Healthcare', 
-                'description' => 'Delivering essential medical care and health education to communities lacking access to basic healthcare services.',
-                'icon' => 'fa-solid fa-heartbeat',
-                'color' => '#e74c3c',
+                'title' => 'Education',
+                'description' => 'The organization supports access to quality, inclusive education to enhance learning outcomes and reduce disparities among marginalized children.',
+                'icon' => 'fa-solid fa-graduation-cap',
+                'color' => '#3498db',
                 'sort_order' => 2,
                 'is_active' => true
             ],
             [
-                'title' => 'Environment',
-                'description' => 'Protecting our planet through conservation efforts, sustainable practices, and environmental education programs.',
-                'icon' => 'fa-solid fa-leaf',
+                'title' => 'Health',
+                'description' => 'JIDS promotes improved health and nutrition practices to ensure the physical and mental well-being of children, families, and communities.',
+                'icon' => 'fa-solid fa-heartbeat',
                 'color' => '#27ae60',
                 'sort_order' => 3,
                 'is_active' => true
             ],
             [
-                'title' => 'Housing',
-                'description' => 'Building safe, affordable housing solutions and supporting families in creating stable, secure homes.',
-                'icon' => 'fa-solid fa-home',
-                'color' => '#17a2b8',
+                'title' => 'Water, Sanitation, and Hygiene (WASH)',
+                'description' => 'JIDS improves access to safe drinking water, sanitation facilities, and hygiene practices to enhance public health and dignity.',
+                'icon' => 'fa-solid fa-tint',
+                'color' => '#1abc9c',
                 'sort_order' => 4,
                 'is_active' => true
             ],
             [
-                'title' => 'Nutrition',
-                'description' => 'Fighting hunger and malnutrition by providing nutritious meals and teaching sustainable food production methods.',
-                'icon' => 'fa-solid fa-utensils',
+                'title' => 'Livelihoods',
+                'description' => 'The organization strengthens sustainable livelihood opportunities to increase household income, resilience, and economic security for vulnerable families.',
+                'icon' => 'fa-solid fa-coins',
                 'color' => '#f39c12',
                 'sort_order' => 5,
                 'is_active' => true
             ],
             [
-                'title' => 'Community',
-                'description' => 'Strengthening communities through capacity building, leadership development, and collaborative partnerships.',
-                'icon' => 'fa-solid fa-users',
-                'color' => '#6c757d',
+                'title' => 'Disaster Risk Reduction (DRR)',
+                'description' => 'JIDS works to reduce community vulnerability to disasters by strengthening preparedness, mitigation, and resilience against natural and climate-induced hazards.',
+                'icon' => 'fa-solid fa-exclamation-triangle',
+                'color' => '#e67e22',
                 'sort_order' => 6,
                 'is_active' => true
             ]
