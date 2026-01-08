@@ -4,14 +4,89 @@
 
 @section('content')
 <div class="container-fluid">
+    <!-- Header Section -->
     <div class="d-flex justify-content-between align-items-center mb-4">
-        <h2 class="h3 mb-0 text-gray-800">Team Management</h2>
+        <div>
+            <h2 class="h3 mb-1 text-gray-800">Team Management</h2>
+            <p class="text-muted mb-0">
+                <i class="fas fa-users me-1"></i> 
+                Showing {{ $teamMembers->firstItem() ?? 0 }} to {{ $teamMembers->lastItem() ?? 0 }} of {{ $teamMembers->total() }} members
+            </p>
+        </div>
         <a href="{{ route('dashboard.team.create') }}" class="btn btn-primary">
             <i class="fas fa-plus me-1"></i> Add Team Member
         </a>
-        <button type="button" class="btn btn-info ms-2" id="testFunctions">
-            <i class="fas fa-cog me-1"></i> Test Functions
-        </button>
+    </div>
+
+    <!-- Statistics Cards -->
+    <div class="row mb-4">
+        <div class="col-xl-3 col-md-6 mb-3">
+            <div class="card border-left-primary shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Total Members</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $teamMembers->total() }}</div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-users fa-2x text-gray-300"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-xl-3 col-md-6 mb-3">
+            <div class="card border-left-success shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Active Members</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">
+                                {{ \App\Models\TeamMember::where('is_active', true)->count() }}
+                            </div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-user-check fa-2x text-gray-300"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-xl-3 col-md-6 mb-3">
+            <div class="card border-left-warning shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">Featured</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">
+                                {{ \App\Models\TeamMember::where('featured', true)->count() }}
+                            </div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-star fa-2x text-gray-300"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-xl-3 col-md-6 mb-3">
+            <div class="card border-left-info shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Departments</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{ count($departments) }}</div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-building fa-2x text-gray-300"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
     @if(session('success'))
@@ -188,10 +263,22 @@
         @endforelse
     </div>
 
-    <!-- Pagination -->
+    <!-- Pagination with Info -->
     @if($teamMembers->hasPages())
-        <div class="d-flex justify-content-center mt-4">
-            {{ $teamMembers->appends(request()->query())->links() }}
+        <div class="card mt-4">
+            <div class="card-body">
+                <div class="d-flex justify-content-between align-items-center flex-wrap">
+                    <div class="mb-2 mb-md-0">
+                        <span class="text-muted">
+                            Showing {{ $teamMembers->firstItem() ?? 0 }} to {{ $teamMembers->lastItem() ?? 0 }} 
+                            of {{ $teamMembers->total() }} results
+                        </span>
+                    </div>
+                    <div>
+                        {{ $teamMembers->appends(request()->query())->links('pagination::bootstrap-4') }}
+                    </div>
+                </div>
+            </div>
         </div>
     @endif
 </div>
@@ -200,26 +287,31 @@
 /* Team member card styling */
 .team-member-card {
     transition: transform 0.2s, box-shadow 0.2s;
+    height: 100%;
+    border: none;
+    box-shadow: 0 0.125rem 0.25rem rgba(0,0,0,0.075);
 }
 
 .team-member-card:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    transform: translateY(-3px);
+    box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.15);
 }
 
 .card-inactive {
-    opacity: 0.7;
+    opacity: 0.65;
+    background-color: #f8f9fa;
 }
 
 .member-photo {
-    width: 80px;
-    height: 80px;
+    width: 100px;
+    height: 100px;
     object-fit: cover;
+    border: 3px solid #f8f9fa;
 }
 
 .member-photo-placeholder {
-    width: 80px;
-    height: 80px;
+    width: 100px;
+    height: 100px;
     background-color: #f8f9fa;
     border: 2px dashed #dee2e6;
 }
@@ -227,10 +319,62 @@
 .social-links a {
     text-decoration: none;
     font-size: 1.1em;
+    transition: transform 0.2s;
+    display: inline-block;
 }
 
 .social-links a:hover {
-    transform: scale(1.1);
+    transform: scale(1.15);
+}
+
+/* Statistics Cards */
+.border-left-primary {
+    border-left: 0.25rem solid #4e73df !important;
+}
+
+.border-left-success {
+    border-left: 0.25rem solid #1cc88a !important;
+}
+
+.border-left-warning {
+    border-left: 0.25rem solid #f6c23e !important;
+}
+
+.border-left-info {
+    border-left: 0.25rem solid #36b9cc !important;
+}
+
+.text-xs {
+    font-size: 0.7rem;
+}
+
+/* Card enhancements */
+.card {
+    border-radius: 0.35rem;
+}
+
+.card-header {
+    background-color: #f8f9fc;
+    border-bottom: 1px solid #e3e6f0;
+}
+
+/* Pagination improvements */
+.pagination {
+    margin-bottom: 0;
+}
+
+.page-link {
+    color: #4e73df;
+}
+
+.page-link:hover {
+    color: #2e59d9;
+    background-color: #eaecf4;
+}
+
+.page-item.active .page-link {
+    background-color: #4e73df;
+    border-color: #4e73df;
 }
 </style>
 
@@ -239,31 +383,6 @@
 @push('scripts')
 <script>
 $(document).ready(function() {
-    console.log('jQuery loaded:', typeof $ !== 'undefined');
-    console.log('Bootstrap loaded:', typeof bootstrap !== 'undefined');
-    
-    // Test Functions Button
-    $('#testFunctions').click(function() {
-        console.log('Testing all functions...');
-        
-        // Test CSRF token
-        console.log('CSRF Token:', '{{ csrf_token() }}');
-        
-        // Test jQuery selectors
-        console.log('Delete member buttons found:', $('.delete-member').length);
-        console.log('Toggle status buttons found:', $('.toggle-status').length);
-        console.log('Delete form found:', $('#deleteForm').length);
-        console.log('Delete modal found:', $('#deleteModal').length);
-        
-        // Test modal functionality
-        $('#deleteModal').modal('show');
-        setTimeout(() => {
-            $('#deleteModal').modal('hide');
-        }, 1000);
-        
-        alert('Function test complete! Check console for results.');
-    });
-    
     // Toggle Status/Featured
     $('.toggle-status').click(function(e) {
         e.preventDefault();
@@ -274,8 +393,6 @@ $(document).ready(function() {
             ? baseUrl + '/' + memberId + '/toggle-status'
             : baseUrl + '/' + memberId + '/toggle-featured';
         
-        console.log('Toggle request:', { memberId, type, url });
-        
         $.ajax({
             url: url,
             method: 'POST',
@@ -283,7 +400,6 @@ $(document).ready(function() {
                 _token: '{{ csrf_token() }}'
             },
             success: function(response) {
-                console.log('Toggle response:', response);
                 if (response.success) {
                     location.reload();
                 } else {
@@ -297,7 +413,7 @@ $(document).ready(function() {
         });
     });
     
-    // Delete Member - Simple Browser Confirmation
+    // Delete Member
     $('.delete-member').click(function(e) {
         e.preventDefault();
         e.stopPropagation();
@@ -305,15 +421,11 @@ $(document).ready(function() {
         const memberId = $(this).data('id');
         const memberName = $(this).data('name');
         
-        console.log('Delete member clicked:', { memberId, memberName });
-        
-        // Simple browser confirmation dialog
+        // Browser confirmation dialog
         const confirmDelete = confirm(`Are you sure you want to delete "${memberName}"?\n\nThis action cannot be undone.`);
         
         if (confirmDelete) {
-            console.log('User confirmed deletion');
-            
-            // Create a form and submit it directly
+            // Create a form and submit it
             const form = $('<form>', {
                 method: 'POST',
                 action: '{{ url("dashboard/team") }}' + '/' + memberId
@@ -335,17 +447,13 @@ $(document).ready(function() {
             // Append form to body and submit
             $('body').append(form);
             form.submit();
-            
-            console.log('Delete form submitted directly');
-        } else {
-            console.log('User cancelled deletion');
         }
     });
     
-    // Auto-hide alerts
+    // Auto-hide alerts after 5 seconds
     setTimeout(function() {
         $('.alert').fadeOut();
     }, 5000);
-}); // <-- Added missing closing parenthesis and semicolon for $(document).ready()
+});
 </script>
 @endpush
