@@ -1751,32 +1751,7 @@
         }
 
         /* Loading Animation */
-        .loading {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: var(--primary-color);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 9999;
-        }
-
-        .spinner {
-            width: 50px;
-            height: 50px;
-            border: 3px solid rgba(255,255,255,0.3);
-            border-top: 3px solid var(--accent-color);
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
-        }
-
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
+        /* Removed loading screen for better page performance */
 
         /* Form Styles */
         .form-control {
@@ -1831,11 +1806,6 @@
     @stack('styles')
 </head>
 <body>
-    <!-- Loading Screen -->
-    <div class="loading" id="loading">
-        <div class="spinner"></div>
-    </div>
-
     <!-- Drawer Overlay -->
     <div class="drawer-overlay" id="drawerOverlay" onclick="closeDrawer()"></div>
 
@@ -2196,6 +2166,20 @@
     <!-- Custom Effects JS - Deferred for better performance -->
     <script src="{{ asset('js/main.js') }}" defer></script>
     
+    <script defer>
+        // Wait for all deferred scripts to load
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize AOS when it's available
+            if (typeof AOS !== 'undefined') {
+                AOS.init({
+                    duration: 1000,
+                    once: true,
+                    offset: 100
+                });
+            }
+        });
+    </script>
+    
     <script>
         // Toast Notification System
         class ToastManager {
@@ -2479,21 +2463,6 @@
         document.addEventListener('keydown', function(e) {
             if (e.key === 'Escape') {
                 closeDrawer();
-            }
-        });
-
-        // Initialize AOS
-        AOS.init({
-            duration: 1000,
-            once: true,
-            offset: 100
-        });
-
-        // Hide loading screen
-        window.addEventListener('load', function() {
-            const loading = document.getElementById('loading');
-            if (loading) {
-                loading.style.display = 'none';
             }
         });
 

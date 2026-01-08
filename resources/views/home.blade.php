@@ -157,6 +157,36 @@
         </div>
     </section>
 
+    <!-- Chairperson Message Section -->
+    <x-chairperson-message 
+        name="Madanraj Katuwal"
+        image="images/chairperson.jpg"
+        position="Chairperson"
+        :message="'Jalpa Integrated Development Society (JIDS) is a non-political, non-profit organization established in 1994/1995 by dedicated social activists from marginalized communities of Udayapur. Since its registration with the District Administration Office, Udayapur on 1st Magh 2051 (B.S.) and affiliation with the Social Welfare Council, JIDS has been working to improve the lives of poor and vulnerable children and families. Our integrated approach focuses on education, health and nutrition, sustainable livelihoods, water and sanitation, child protection, environmental protection, disaster resilience, and climate change adaptation, primarily in the hilly regions of Nepal, through strong community mobilization and inclusive development practices.
+
+In partnership with local governments and national and international organizations, including World Vision International Nepal, JIDS is implementing the Sponsorship Operation Program (SOP) and key project models such as Citizen Voice and Action, Child Protection, and IMPACT+ under the Integrated Programme Framework (IPF). These initiatives currently support vulnerable communities in Triyuga and Katari Municipalities and Rautamai, Limchungbung, Udayapurgadhi, and Tapli Rural Municipalities. We remain committed to empowering communities, protecting children\'s rights, and building resilient and equitable societies through meaningful collaboration with our partners and stakeholders.'"
+        bg-color="#ffffff"
+    />
+
+    <!-- Communities We Serve Section -->
+    @php
+        $communitiesData = [
+            ['name' => 'Triyuga Municipality', 'wards' => '15', 'boys' => 222, 'girls' => 210, 'total' => 432],
+            ['name' => 'Rautamai RM', 'wards' => '2,3,4,5,6,7 & 8', 'boys' => 1099, 'girls' => 1025, 'total' => 2124],
+            ['name' => 'Limchungbung RM', 'wards' => '5', 'boys' => 197, 'girls' => 201, 'total' => 398],
+            ['name' => 'Katari Municipality', 'wards' => '8 & 9', 'boys' => 252, 'girls' => 249, 'total' => 501],
+            ['name' => 'Udayapurgadi RM', 'wards' => '1 & 2', 'boys' => 222, 'girls' => 246, 'total' => 468],
+            ['name' => 'Tapli RM', 'wards' => '1,2,3 & 5', 'boys' => 993, 'girls' => 1033, 'total' => 2026],
+        ];
+    @endphp
+    
+    <x-communities-table 
+        title="Communities We Serve"
+        subtitle="Reached Registered Children (RC) in Local Governments - FY 2025/26"
+        :data="$communitiesData"
+        bg-color="#f8f9fa"
+    />
+
     <!-- Norms & Values Section -->
     <section class="norms-values-section section-padding" style="background: linear-gradient(135deg, #ffffff 0%, #f0f9ff 100%); position: relative; overflow: hidden;">
         <div class="container">
